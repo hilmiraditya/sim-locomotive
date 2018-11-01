@@ -24,11 +24,14 @@ Route::post('/login/custom',[
 ]);
 
 
-Route::group(['prefix' => 'Admin'], function () {
-	Route::get('Home', 'Admin\HomeController@index');
-})->middleware('auth');
+Route::group(['middleware' => 'auth'], function () {
 
-
-Route::group(['prefix' => 'Staff'], function () {
-	Route::get('Home', 'Staff\HomeController@index');
-})->middleware('auth');
+	Route::group(['prefix' => 'Admin', 'middleware' => 'admin'], function () {
+		Route::get('Home', 'Admin\HomeController@index');
+	});
+	
+	Route::group(['prefix' => 'Staff', 'middleware' => 'staff'], function () {
+		Route::get('Home', 'Staff\HomeController@index');
+	});
+	
+});
