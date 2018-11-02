@@ -14,9 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/nyoba', function () {
-    return view('login');
-});
 Route::get('login', [
   'as' => 'login',
   'uses' => 'Auth\LoginController@showLoginForm'
@@ -37,12 +34,24 @@ Route::post('register', [
   'as' => '',
   'uses' => 'Auth\RegisterController@register'
 ]);
-Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['prefix' => 'Admin', 'middleware' => 'admin'], function () {
 		Route::get('Home', 'Admin\HomeController@index');
+
+    Route::get('Akun/LihatAkun', 'Admin\AkunController@index');
+    Route::get('Akun/Hapus/{id}', 'Admin\AkunController@delete');
+
+    Route::get('Akun/Tambah', 'Admin\AkunController@create');
+    Route::post('Akun/Tambah', 'Admin\AkunController@createdata');
+
+    Route::get('Akun/Ubah/{id}', 'Admin\AkunController@update');
+    Route::post('Akun/Ubah', 'Admin\AkunController@updatedata');
+
+    Route::get('PengaturanAkun', 'Admin\PengaturanAkunController@update');
+    Route::post('PengaturanAkun', 'Admin\PengaturanAkunController@updatedata');
 	});
 	
 	Route::group(['prefix' => 'Staff', 'middleware' => 'staff'], function () {
