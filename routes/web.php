@@ -56,5 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::group(['prefix' => 'Staff', 'middleware' => 'staff'], function () {
 		Route::get('Home', 'Staff\HomeController@index');
+    Route::get('PengaturanAkun', 'Admin\PengaturanAkunController@update');
+    Route::post('PengaturanAkun', 'Admin\PengaturanAkunController@updatedata');
 	});
 });

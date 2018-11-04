@@ -45,7 +45,7 @@
               </div><!-- col-8 -->
               <div class="col-lg-4">
                 <div class="form-group mg-b-10-force">
-                  <label class="form-control-label">Hak Akses: <span class="tx-danger">*</span></label>
+                  <label class="form-control-label">Hak Akses/Role : <span class="tx-danger">*</span></label>
                   <select name="role" class="form-control select2">
                     <option label="Pilih"></option>
                     <option value="Admin">Admin</option>

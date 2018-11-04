@@ -20,16 +20,10 @@
     <div class="sl-sideleft">
       <label class="sidebar-label">Navigation</label>
       <div class="sl-sideleft-menu">
-        <a href="{{'/Admin/Home'}}" class="sl-menu-link">
+        <a href="{{'/Staff/Home'}}" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Dashboard</span>
-          </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
-        <a href="{{'/Admin/Akun/LihatAkun'}}" class="sl-menu-link">
-          <div class="sl-menu-item">
-            <i class="menu-item-icon icon ion-person-stalker tx-22"></i>
-            <span class="menu-item-label">Akun</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
       </div><!-- sl-sideleft-menu -->
@@ -52,9 +46,6 @@
               <img src="{{ url('images/people.png') }}" class="wd-32 rounded-circle" alt="">
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-200">
-              <ul class="list-unstyled user-profile-nav">
-                <li><a href="{{url('Admin/PengaturanAkun')}}"><i class="icon ion-ios-gear-outline"></i>Pengaturan Akun</a></li>
-              </ul>
               <ul class="list-unstyled user-profile-nav">
                 <li>
                   <a href="{{ route('logout') }}"] onclick="event.preventDefault();document.getElementById('logout-form').submit();">

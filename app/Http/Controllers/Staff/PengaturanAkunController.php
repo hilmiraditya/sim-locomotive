@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Staff;
 
-use Auth;
-use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,7 +10,7 @@ class PengaturanAkunController extends Controller
     public function update()
     {
     	$view = ['user' => Auth::user()];
-    	return view('admin.pengaturanakun')->with(compact('view'));
+    	return view('staff.pengaturanakun')->with(compact('view'));
     }
     public function updatedata(Request $request)
     {
@@ -25,6 +23,6 @@ class PengaturanAkunController extends Controller
         	$akun->password = bcrypt($request->get('password'));
         }
         $akun->save();
-        return redirect('Admin/Home')->with('pesan_sukses', 'Akun berhasil diubah !');
-    }    
+        return redirect('Staff/Home')->with('pesan_sukses', 'Akun berhasil diubah !');
+    }
 }

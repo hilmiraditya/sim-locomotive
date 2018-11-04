@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Staff;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,6 +15,7 @@ class HomeController extends Controller
     
     public function index()
     {
-    	return view('staff.home');
+        $view = ['user' => Auth::user()];
+    	return view('staff.home')->with(compact('view'));
     }
 }

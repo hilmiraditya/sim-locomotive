@@ -15,7 +15,7 @@
           <div class="form-layout">
             <div class="row mg-b-25">
               <div class="col-lg-4">
-                <input type="hidden" value="{{$view['user']->id}} name="id">
+                <input type="hidden" value="{{$view['user']->id}}" name="id">
                 <div class="form-group">
                   <label class="form-control-label">Nama: <span class="tx-danger">*</span></label>
                   <input class="form-control" name="name" type="text" value="{{$view['user']->name}}">
@@ -24,7 +24,7 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" value="{{$view['user']->email}}" name="email" disabled>
+                  <input disabled class="form-control" name="email" type="text" value="{{$view['user']->email}}">
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-8">

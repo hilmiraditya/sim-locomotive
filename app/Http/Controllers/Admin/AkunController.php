@@ -53,11 +53,10 @@ class AkunController extends Controller
     public function updatedata(Request $request)
     {
         $validator  = $request->validate([
-            'name'      => 'required',
+            'name'      => 'required'
         ]);
         $akun = User::find($request->get('id'));
         $akun->name = $request->get('name');
-        $akun->email = $request->get('email');
         if($request->get('password') != NULL){
         	$akun->password = bcrypt($request->get('password'));
         }
@@ -66,13 +65,11 @@ class AkunController extends Controller
             else $akun->admin = 0;
         }
         $akun->save();
-        return Redirect::back()->with('pesan_sukses', 'Akun berhasil diubah !');
+        return redirect('Admin/Akun/LihatAkun')
+            ->with('pesan_sukses', 'Akun berhasil diubah !');
     }
     public function delete($id)
     {
-    	if(Auth::user()->id == $id){
-        	return Redirect::back()->with('pesan_gagal', 'Akun tidak bisa dihapus');
-    	}
     	User::find($id)->delete();
         return Redirect::back()->with('pesan_sukses', 'Akun berhasil dihapus !');
     }
