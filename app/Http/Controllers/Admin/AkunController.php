@@ -6,7 +6,7 @@ use Auth;
 use Redirect;
 use URL;
 
-use App\User;
+use App\Model\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,12 +18,12 @@ class AkunController extends Controller
            	'user' => Auth::user(),
            	'account' => User::where('email','!=', Auth::user()->email)->get()
     	];
-    	return view('admin.akun')->with(compact('view'));
+    	return view('admin.akun.akun')->with(compact('view'));
     }
     public function create()
     {
         $view = ['user' => Auth::user()];
-        return view('admin.tambahakun')->with(compact('view'));
+        return view('admin.akun.tambahakun')->with(compact('view'));
     }
     public function createdata(Request $request)
     {
@@ -48,7 +48,7 @@ class AkunController extends Controller
             'user' => Auth::user(),
             'edit' => User::find($id)
         ];
-        return view('admin.updateakun')->with(compact('view'));
+        return view('admin.akun.updateakun')->with(compact('view'));
     }
     public function updatedata(Request $request)
     {

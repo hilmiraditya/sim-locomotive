@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\User;
+use App\Model\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,7 +12,7 @@ class PengaturanAkunController extends Controller
     public function update()
     {
     	$view = ['user' => Auth::user()];
-    	return view('admin.pengaturanakun')->with(compact('view'));
+    	return view('admin.pengaturanakun.pengaturanakun')->with(compact('view'));
     }
     public function updatedata(Request $request)
     {

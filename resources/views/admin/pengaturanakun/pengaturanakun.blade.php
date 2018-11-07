@@ -2,7 +2,7 @@
 @section('content')
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
-        <a class="breadcrumb-item" href="">Sistem Information Management</a>
+        <a class="breadcrumb-item" href="">Sistem Information Management Jancok</a>
         <span class="breadcrumb-item active">Pengaturan Akun</span>
       </nav>
       <div class="sl-pagebody">

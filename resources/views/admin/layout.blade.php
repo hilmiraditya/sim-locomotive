@@ -4,10 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SIM Locomotive</title>
-    <link href="{{ url('/admin_page/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    <link href="{{ url('/admin_page/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
-    <link href="{{ url('/admin_page/lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
-    <link href="../lib/rickshaw/rickshaw.min.css" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/rickshaw/rickshaw.min.css') }}" rel="stylesheet">
+
+    <link href="{{ url('admin_page/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/highlightjs/github.css') }}" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/select2/css/select2.min.css') }}" rel="stylesheet">
 
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ url('/admin_page/css/starlight.css') }}">
@@ -18,7 +25,7 @@
     <!-- ########## START: LEFT PANEL ########## -->
     <div class="sl-logo"><img style="width: 50%;" src="{{ url('/images/logo.png') }}"></div>
     <div class="sl-sideleft">
-      <label class="sidebar-label">Navigation</label>
+      <label class="sidebar-label">Navigasi</label>
       <div class="sl-sideleft-menu">
         <a href="{{'/Admin/Home'}}" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -30,6 +37,12 @@
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-person-stalker tx-22"></i>
             <span class="menu-item-label">Akun</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="{{'/Admin/Produk/LihatProduk'}}" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-person-stalker tx-22"></i>
+            <span class="menu-item-label">Produk</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
       </div><!-- sl-sideleft-menu -->
@@ -76,8 +89,9 @@
     <!-- ########## END: MAIN PANEL ########## -->
 
     <script src="{{ url('admin_page/lib/jquery/jquery.js') }}"></script>
-    <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>
     <script src="{{ url('admin_page/lib/bootstrap/bootstrap.js') }}"></script>
+
+    <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>
     <script src="{{ url('admin_page/lib/jquery-ui/jquery-ui.js') }}"></script>
     <script src="{{ url('admin_page/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
     <script src="{{ url('admin_page/lib/jquery.sparkline.bower/jquery.sparkline.min.js') }}"></script>
@@ -94,4 +108,5 @@
     <script src="{{ url('admin_page/js/dashboard.js') }}"></script>
   </body>
   @yield('modal')
+  @yield('script')
 </html>

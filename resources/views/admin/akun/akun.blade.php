@@ -66,3 +66,37 @@
       <a href="{{url('Admin/Akun/Tambah')}}" style="color: white;" class="btn btn-primary">Tambah Akun</a>
     </div>
 @endsection
+@section('script')
+    <script src="{{ url('admin_page/lib/jquery/jquery.js') }}"></script>
+    <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>
+    <script src="{{ url('admin_page/lib/bootstrap/bootstrap.js') }}"></script>
+    <script src="{{ url('admin_page/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
+    <script src="{{ url('admin_page/lib/highlightjs/highlight.pack.js') }}"></script>
+    <script src="{{ url('admin_page/lib/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ url('admin_page/lib/datatables-responsive/dataTables.responsive.js') }}"></script>
+    <script src="{{ url('admin_page/lib/select2/js/select2.min.js') }}"></script>
+    <script>
+      $(function(){
+        'use strict';
+
+        $('#datatable1').DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: 'Search...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+          }
+        });
+
+        $('#datatable2').DataTable({
+          bLengthChange: false,
+          searching: false,
+          responsive: true
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+      });
+    </script>
+@endsection

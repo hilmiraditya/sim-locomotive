@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('PengaturanAkun', 'Admin\PengaturanAkunController@update');
     Route::post('PengaturanAkun', 'Admin\PengaturanAkunController@updatedata');
+
+    Route::get('Produk/LihatProduk', 'Admin\ProdukController@index');
 	});
 	
 	Route::group(['prefix' => 'Staff', 'middleware' => 'staff'], function () {
