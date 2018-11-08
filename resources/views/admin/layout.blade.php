@@ -45,6 +45,17 @@
             <span class="menu-item-label">Produk</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon ion-document-text tx-20"></i>
+            <span class="menu-item-label">Pesanan</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="#" class="nav-link">Daftar Pesanan</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Tambah Pesanan</a></li>
+        </ul>
       </div><!-- sl-sideleft-menu -->
 
       <br>
