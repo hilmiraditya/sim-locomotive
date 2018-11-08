@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produk extends Model
 {
-    protected $table = 'Model';
+    protected $table = 'Produk';
 
     protected $fillabel = [
-    	'nama_produk', 'harga_produk', 'kuantitas', 'deskripsi'
+    	'nama_produk', 'harga_produk', 'kuantitas_produk', 'deskripsi_produk'
     ];
 }

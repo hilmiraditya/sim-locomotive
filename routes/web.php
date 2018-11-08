@@ -40,20 +40,28 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['prefix' => 'Admin', 'middleware' => 'admin'], function () {
 		Route::get('Home', 'Admin\HomeController@index');
+    Route::get('nyoba', 'Admin\ProdukController@exportPDF');
 
-    Route::get('Akun/LihatAkun', 'Admin\AkunController@index');
-    Route::get('Akun/Hapus/{id}', 'Admin\AkunController@delete');
+    Route::group(['prefix' => 'Akun'], function () {
+      Route::get('LihatAkun', 'Admin\AkunController@index');
+      Route::get('Hapus/{id}', 'Admin\AkunController@delete');
+      Route::get('Tambah', 'Admin\AkunController@create');
+      Route::post('Tambah', 'Admin\AkunController@createdata');
+      Route::get('Ubah/{id}', 'Admin\AkunController@update');
+      Route::post('Ubah', 'Admin\AkunController@updatedata');    
+    });
 
-    Route::get('Akun/Tambah', 'Admin\AkunController@create');
-    Route::post('Akun/Tambah', 'Admin\AkunController@createdata');
-
-    Route::get('Akun/Ubah/{id}', 'Admin\AkunController@update');
-    Route::post('Akun/Ubah', 'Admin\AkunController@updatedata');
+    Route::group(['prefix' => 'Produk'], function () {
+      Route::get('LihatProduk', 'Admin\ProdukController@index');
+      Route::get('TambahProduk', 'Admin\ProdukController@create');
+      Route::post('TambahProduk', 'Admin\ProdukController@createdata');
+      Route::get('UbahProduk/{id}', 'Admin\ProdukController@update');
+      Route::post('UbahProduk', 'Admin\ProdukController@updatedata');
+      Route::get('HapusProduk/{id}', 'Admin\ProdukController@delete');
+    });
 
     Route::get('PengaturanAkun', 'Admin\PengaturanAkunController@update');
     Route::post('PengaturanAkun', 'Admin\PengaturanAkunController@updatedata');
-
-    Route::get('Produk/LihatProduk', 'Admin\ProdukController@index');
 	});
 	
 	Route::group(['prefix' => 'Staff', 'middleware' => 'staff'], function () {

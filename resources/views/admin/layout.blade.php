@@ -41,7 +41,7 @@
         </a><!-- sl-menu-link -->
         <a href="{{'/Admin/Produk/LihatProduk'}}" class="sl-menu-link">
           <div class="sl-menu-item">
-            <i class="menu-item-icon icon ion-person-stalker tx-22"></i>
+            <i class="menu-item-icon icon fa fa-inbox tx-22"></i>
             <span class="menu-item-label">Produk</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->

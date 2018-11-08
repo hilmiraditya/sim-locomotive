@@ -6,7 +6,7 @@ use Auth;
 use Redirect;
 use URL;
 
-use App\Model\User;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

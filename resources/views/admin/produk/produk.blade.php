@@ -13,6 +13,18 @@
           <p>List Daftar Produk</p>
         </div><!-- sl-page-title -->
         <div class="card pd-20 pd-sm-40">
+        @if($view['produk']->count() != 0)
+          <div class="table-wrapper">
+          @if(session()->has('pesan_sukses'))
+           <div class="alert alert-success" role="alert">
+            {{session()->get('pesan_sukses')}}
+           </div>       
+          @endif
+          @if(session()->has('pesan_gagal'))
+           <div class="alert alert-danger" role="alert">
+              {{session()->get('pesan_gagal')}}
+           </div>       
+          @endif
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
@@ -26,24 +38,34 @@
                 </tr>
               </thead>
               <tbody>
+                <?php $a=1; ?>
+                @foreach($view['produk'] as $produk)
               	<tr>
-              		<td>Wkwkwk</td>
-              		<td>Wkwkwk</td>
-              		<td>Wkwkwk</td>
-              		<td>Wkwkwk</td>
-              		<td>Wkwkwk</td>
+              		<td>{{ $a }}</td>
+              		<td>{{ $produk->nama_produk }}</td>
+              		<td>{{ "Rp ".number_format($produk->harga_produk,0,',','.').",-" }}</td>
+              		<td>{{ $produk->kuantitas_produk }}</td>
+              		<td>{{ $produk->deskripsi_produk }}</td>
               		<td style="color: white;">
-              			<a class="btn btn-sm btn-primary">Edit</a>
-              			<a class="btn btn-sm btn-danger">Hapus</a>
+              			<a href="{{ url('Admin/Produk/UbahProduk/'.$produk->id) }}" class="btn btn-sm btn-primary">Edit</a>
+              			<a href="{{ url('Admin/Produk/HapusProduk/'.$produk->id) }}" class="btn btn-sm btn-danger">Hapus</a>
               		</td>
+                  <?php $a++; ?>
+                  @endforeach
               	</tr>
               </tbody>
             </table>
           </div><!-- table-wrapper -->
           <br>
           <div style="color: white;" align="center">
-      		<a class="btn btn-primary">Download Katalog Produk</a>
-      		<a class="btn btn-success">Tambah Produk</a>
+      		<a class="btn btn-primary">Export Data Produk</a>
+      		<a href="{{ url('Admin/Produk/TambahProduk') }}" class="btn btn-success">Tambah Produk</a>
+        @else
+        <div class="alert alert-danger" role="alert">Belum Ada Akun !</div>
+        <div style="color: white;" align="center">
+          <a href="{{ url('Admin/Produk/TambahProduk') }}" class="btn btn-success">Tambah Produk</a>
+        </div>
+      @endif
 		</div>
         </div><!-- card -->
       </div><!-- sl-pagebody -->
