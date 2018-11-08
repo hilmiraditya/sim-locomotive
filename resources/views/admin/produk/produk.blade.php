@@ -58,7 +58,7 @@
           </div><!-- table-wrapper -->
           <br>
           <div style="color: white;" align="center">
-      		<a class="btn btn-primary">Export Data Produk</a>
+      		<a href="{{ url('Admin/Produk/DownloadPDF') }}" class="btn btn-primary">Export Data Produk</a>
       		<a href="{{ url('Admin/Produk/TambahProduk') }}" class="btn btn-success">Tambah Produk</a>
         @else
         <div class="alert alert-danger" role="alert">Belum Ada Akun !</div>

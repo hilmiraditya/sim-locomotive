@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Auth;
 use PDF;
+use Carbon\Carbon;
 
 use App\Model\Produk;
 use Illuminate\Http\Request;
@@ -70,8 +71,10 @@ class ProdukController extends Controller
     }
     public function exportPDF()
     {
-    	$data = ['jancok' => 'percobaan'];
+    	$data = ['produk' => Produk::all()];
+        //dd($data['produk']);
+        //return view('admin.produk.invoice')->with(compact('data'));
     	$pdf = PDF::loadView('admin.produk.invoice', $data);
-		return $pdf->download('invoice.pdf');
+		return $pdf->download('Produk'.Carbon::now().'.pdf');
     }
 }

@@ -40,7 +40,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['prefix' => 'Admin', 'middleware' => 'admin'], function () {
 		Route::get('Home', 'Admin\HomeController@index');
-    Route::get('nyoba', 'Admin\ProdukController@exportPDF');
 
     Route::group(['prefix' => 'Akun'], function () {
       Route::get('LihatAkun', 'Admin\AkunController@index');
@@ -58,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('UbahProduk/{id}', 'Admin\ProdukController@update');
       Route::post('UbahProduk', 'Admin\ProdukController@updatedata');
       Route::get('HapusProduk/{id}', 'Admin\ProdukController@delete');
+      Route::get('DownloadPDF', 'Admin\ProdukController@exportPDF');
     });
 
     Route::get('PengaturanAkun', 'Admin\PengaturanAkunController@update');
