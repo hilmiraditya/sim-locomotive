@@ -3,8 +3,8 @@
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item">Sistem Information Management</a>
-        <a class="breadcrumb-item">Produk</a>
-        <span class="breadcrumb-item active">Lihat Produk</span>
+        <a class="breadcrumb-item">Pesanan</a>
+        <span class="breadcrumb-item active">Daftar Pesanan</span>
       </nav>
 
       <div class="sl-pagebody">
@@ -13,7 +13,7 @@
           <p>List Daftar Produk</p>
         </div><!-- sl-page-title -->
         <div class="card pd-20 pd-sm-40">
-        @if($view['produk']->count() != 0)
+        @if($view['pesanan']->count() != 0)
           <div class="table-wrapper">
           @if(session()->has('pesan_sukses'))
            <div class="alert alert-success" role="alert">
@@ -30,25 +30,25 @@
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama</th>
-                  <th>Harga</th>
-                  <th>Kuantitas</th>
-                  <th>Deskripsi</th>
+                  <th>Nama Client</th>
+                  <th>Unit</th>
+                  <th>Jadwal Revisi</th>
+                  <th>Kontak</th>
+                  <th>Input</th>
                   <th>Opsi</th>
                 </tr>
               </thead>
               <tbody>
                 <?php $a=1; ?>
-                @foreach($view['produk'] as $produk)
+                @foreach($view['pesanan'] as $pesanan)
               	<tr>
               		<td>{{ $a }}</td>
-              		<td>{{ $produk->nama_produk }}</td>
-              		<td>{{ "Rp ".number_format($produk->harga_produk,0,',','.').",-" }}</td>
-              		<td>{{ $produk->kuantitas_produk }}</td>
+              		<td>{{ $pesanan->nama_klien }}</td>
+              		<td>{{ $pesanan->unit_produksi }}</td>
+              		<td>{{ $pesanan->created_at }}</td>
               		<td>{{ $produk->deskripsi_produk }}</td>
               		<td style="color: white;">
-              			<a href="{{ url('Admin/Produk/UbahProduk/'.$produk->id) }}" class="btn btn-sm btn-primary">Edit</a>
-              			<a href="{{ url('Admin/Produk/HapusProduk/'.$produk->id) }}" class="btn btn-sm btn-danger">Hapus</a>
+              			<a href="#" class="btn btn-sm btn-primary">Lihat Detil</a>
               		</td>
                   <?php $a++; ?>
                   @endforeach
@@ -57,14 +57,8 @@
             </table>
           </div><!-- table-wrapper -->
           <br>
-          <div style="color: white;" align="center">
-      		<a href="{{ url('Admin/Produk/DownloadPDF') }}" class="btn btn-primary">Export Data Produk</a>
-      		<a href="{{ url('Admin/Produk/TambahProduk') }}" class="btn btn-success">Tambah Produk</a>
         @else
-        <div class="alert alert-danger" role="alert">Belum Ada Produk !</div>
-        <div style="color: white;" align="center">
-          <a href="{{ url('Admin/Produk/TambahProduk') }}" class="btn btn-success">Tambah Produk</a>
-        </div>
+        <div class="alert alert-danger" role="alert">Belum Ada Pesanan !</div>
       @endif
 		</div>
         </div><!-- card -->
@@ -83,7 +77,6 @@
     <script>
       $(function(){
         'use strict';
-
         $('#datatable1').DataTable({
           responsive: true,
           language: {
@@ -92,14 +85,11 @@
             lengthMenu: '_MENU_ items/page',
           }
         });
-
         $('#datatable2').DataTable({
           bLengthChange: false,
           searching: false,
           responsive: true
         });
-
-        // Select2
         $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
       });
     </script>

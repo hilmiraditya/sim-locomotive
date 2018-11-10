@@ -60,6 +60,10 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('DownloadPDF', 'Admin\ProdukController@exportPDF');
     });
 
+    Route::group(['prefix' => 'Pesanan'], function () {
+      Route::get('DaftarPesanan', 'Admin\PesananController@index');
+    });
+
     Route::get('PengaturanAkun', 'Admin\PengaturanAkunController@update');
     Route::post('PengaturanAkun', 'Admin\PengaturanAkunController@updatedata');
 	});

@@ -11,4 +11,9 @@ class Produk extends Model
     protected $fillabel = [
     	'nama_produk', 'harga_produk', 'kuantitas_produk', 'deskripsi_produk'
     ];
+
+    public function OrderProduk()
+    {
+    	return $this->hasMany('App\Model\OrderProduk');
+    }
 }

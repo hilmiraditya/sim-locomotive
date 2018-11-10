@@ -53,16 +53,12 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="#" class="nav-link">Daftar Pesanan</a></li>
+          <li class="nav-item"><a href="{{'/Admin/Pesanan/DaftarPesanan'}}" class="nav-link">Daftar Pesanan</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Tambah Pesanan</a></li>
         </ul>
-      </div><!-- sl-sideleft-menu -->
-
+      </div>
       <br>
-    </div><!-- sl-sideleft -->
-    <!-- ########## END: LEFT PANEL ########## -->
-
-    <!-- ########## START: HEAD PANEL ########## -->
+    </div>
     <div class="sl-header">
       <div class="sl-header-left">
         <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
@@ -94,14 +90,9 @@
         </nav>
       </div><!-- sl-header-right -->
     </div><!-- sl-header -->
-    <!-- ########## END: HEAD PANEL ########## -->
-    <!-- ########## START: MAIN PANEL ########## -->$
     @yield('content')
-    <!-- ########## END: MAIN PANEL ########## -->
-
     <script src="{{ url('admin_page/lib/jquery/jquery.js') }}"></script>
     <script src="{{ url('admin_page/lib/bootstrap/bootstrap.js') }}"></script>
-
     <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>
     <script src="{{ url('admin_page/lib/jquery-ui/jquery-ui.js') }}"></script>
     <script src="{{ url('admin_page/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>

@@ -72,8 +72,6 @@ class ProdukController extends Controller
     public function exportPDF()
     {
     	$data = ['produk' => Produk::all()];
-        //dd($data['produk']);
-        //return view('admin.produk.invoice')->with(compact('data'));
     	$pdf = PDF::loadView('admin.produk.invoice', $data);
 		return $pdf->download('Produk'.Carbon::now().'.pdf');
     }

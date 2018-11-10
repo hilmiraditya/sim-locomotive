@@ -47,6 +47,11 @@ class Pesanan extends Migration
 
             //unit produksi
             $table->string('unit_produksi');
+
+            //penginput
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('nama_penginput');
             
             $table->timestamps();
         });
@@ -59,6 +64,9 @@ class Pesanan extends Migration
      */
     public function down()
     {
+        Schema::table('Pesanan', function (Blueprint $table) {
+            $table->dropForeign('pesanan_user_id_foreign');
+        });
         Schema::dropIfExists('Pesanan');
     }
 }

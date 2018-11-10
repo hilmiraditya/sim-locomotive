@@ -38,4 +38,9 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function Pesanan()
+    {
+        return $this->hasMany('App\Model\Pesanan');
+    }
 }
