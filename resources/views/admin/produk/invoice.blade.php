@@ -23,45 +23,16 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
             <div class="invoice-title" align="center">
                 <br>
-                <img src="https://www.locomotiveproduction.com/assets/main/img/logo.png" style="width:10%;">
+                <img src="https://www.locomotiveproduction.com/assets/main/img/logo.png" style="width:15%;">
+                <br><br>
+                <h6><b>Locomotive Production :</b> (+62) 878-8696-1266 | <b>Locomotive Wedding :</b> (+62) 822-3459-9520</h6>
+                <h6><b>Email :</b> admin@locomotiveproduction.com</h6>
+                <h6><b>Alamat :</b> Jl. Juwono No. 7 Surabaya | Jl. Sedapmalam 18a Malang</h6>
             </div>
             <hr>
-            <div class="row">
-                <div class="col-xs-6">
-                    <address>
-                    <strong>Locomotive Production :</strong><br>
-                        (+62) 878-8696-1266<br>
-                        <br>
-                        <br>
-                    </address>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <address>
-                    <strong>Locomotive Wedding :</strong><br>
-                         (+62) 822-3459-9520<br>
-                        <br>
-                        <br>
-                    </address>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <address>
-                        <strong>Alamat :</strong><br>
-                        Jl. Juwono No. 7 Surabaya<br>
-                        Jl. Sedapmalam 18a Malang
-                    </address>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <address>
-                        <strong>Email :</strong><br>
-                        admin@locomotiveproduction.com<br><br>
-                    </address>
-                </div>
-            </div>
         </div>
     </div>
     
@@ -69,11 +40,11 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><strong>Katalog Produk</strong></h3>
+                    <h3 align="center" class="panel-title"><strong>Katalog Produk</strong></h3>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-condensed">
+                    <div>
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <td><strong>No</strong></td>

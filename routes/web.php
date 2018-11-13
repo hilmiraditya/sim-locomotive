@@ -62,6 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'Pesanan'], function () {
       Route::get('DaftarPesanan', 'Admin\PesananController@index');
+      Route::get('TambahPesanan/Biodata', 'Admin\PesananController@tambahpesanan_biodata');
     });
 
     Route::get('PengaturanAkun', 'Admin\PengaturanAkunController@update');
