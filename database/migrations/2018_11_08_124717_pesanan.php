@@ -17,7 +17,7 @@ class Pesanan extends Migration
             $table->increments('id');
             //biodata klien
             $table->string('nama_klien');
-            $table->string('noktp_klien');
+            $table->string('noidentitas_klien');
             $table->string('alamat_klien',100);
             $table->string('email_klien');
             $table->string('perusahaan_klien')->default('-');
@@ -27,10 +27,9 @@ class Pesanan extends Migration
             $table->string('instagram_klien')->default('-');
             $table->string('facebook_klien')->default('-');
             $table->string('twitter_klien')->default('-');
-            $table->string('foto_klien');
+            $table->string('fotoidentitas_klien');
             
             //agenda produksi
-            $table->date('tanggal_produksi');
             $table->string('deskripsi_agenda_produksi',300);
 
             //jadwal revisi dan serah terima
@@ -40,10 +39,11 @@ class Pesanan extends Migration
             $table->date('serah_terimah');
 
             //catatan lain
-            $table->string('catatan_lain',300);
+            $table->string('catatan_lain',300)->default('-');
 
             //status pemesanan
-            $table->integer('status_pesanan');
+            $table->integer('status_pesanan')->default(1);
+            // status pesanan : 0 = dibatalkan, 1 = sedang berjalan, 2 = sudah selesai
 
             //unit produksi
             $table->string('unit_produksi');
@@ -52,6 +52,12 @@ class Pesanan extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('nama_penginput');
+
+            //kirim email klien
+            $table->boolean('isEmailed')->default(0);
+
+            //total harga
+            $table->integer('total_harga');
             
             $table->timestamps();
         });
@@ -64,9 +70,6 @@ class Pesanan extends Migration
      */
     public function down()
     {
-        Schema::table('Pesanan', function (Blueprint $table) {
-            $table->dropForeign('pesanan_user_id_foreign');
-        });
         Schema::dropIfExists('Pesanan');
     }
 }

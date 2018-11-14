@@ -10,11 +10,16 @@ class OrderProduk extends Model
 
     protected $fillable = [
     	'nama_produk', 'harga_produk', 'kuantitas_produk', 'deskripsi_produk',
-    	'produk_id'
+    	'produk_id', 'pesanan_id'
     ];
 
     public function Produk()
     {
     	return $this->belongsTo('App\Model\Produk');
+    }
+
+    public function Pesanan()
+    {
+    	return $this->belongsTo('App\Model\Pesanan');
     }
 }

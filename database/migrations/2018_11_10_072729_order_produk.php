@@ -23,6 +23,9 @@ class OrderProduk extends Migration
             $table->unsignedInteger('produk_id');
             $table->foreign('produk_id')->references('id')->on('produk');
 
+            $table->unsignedInteger('pesanan_id');
+            $table->foreign('pesanan_id')->references('id')->on('pesanan');
+
             $table->timestamps();
         });
     }
@@ -34,9 +37,6 @@ class OrderProduk extends Migration
      */
     public function down()
     {
-        Schema::table('OrderProduk', function (Blueprint $table) {
-            $table->dropForeign('orderproduk_produk_id_foreign');
-        });
         Schema::dropIfExists('OrderProduk');
     }
 }

@@ -10,9 +10,9 @@ class Pesanan extends Model
 
     protected $fillable = [
     	//biodata klien
-    	'nama_klien', 'noktp_klien', 'alamat_klien', 'email_klien', 'perusahaan_klien',
+    	'nama_klien', 'noidentitas_klien', 'alamat_klien', 'email_klien', 'perusahaan_klien',
     	'jabatan_klien', 'notelp_klien', 'nowhatsapp_klien', 'instagram_klien', 'facebook_klien', 'twitter_klien',
-    	'foto_klien',
+    	'fotoidentitas_klien',
 
     	//produksi
     	'tanggal_produksi','deskripsi_agenda_produksi',
@@ -30,14 +30,20 @@ class Pesanan extends Model
     	'unit_produksi',
 
     	//penginput
-    	'user_id', 'nama_penginput'
+    	'user_id', 'nama_penginput',
+
+        //kirim email ke klien
+        'isEmailed',
+
+        //total harga
+        'total_harga'
     ];
 
     public function User()
     {
     	return $this->belongsTo('App\User');
     }
-    
+
     public function OrderProduk()
     {
         return $this->hasMany('App\Model\OrderProduk');

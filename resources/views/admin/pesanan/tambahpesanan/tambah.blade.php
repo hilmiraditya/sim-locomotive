@@ -99,7 +99,15 @@
         <div class="card pd-20 pd-sm-40">
           <h6 class="card-body-title">Pemesanan Produk</h6>
           <p class="mg-b-20 mg-sm-b-30">Silahkan di isi form yang tersedia dibawah ini</p>
-
+          @if (count($errors) > 0)
+          <div class = "alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+          </div>
+          @endif
           <div id="wizard1">
             <h3>Biodata</h3>
             <section>

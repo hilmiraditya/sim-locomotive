@@ -33,19 +33,19 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Total Harga HPP : <span class="tx-danger">*</span></label>
+                  <label class="form-control-label">Total Harga HPP :</label>
                   <input class="form-control" type="text" name="name" disabled>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label">Total Harga HPP + 30% : <span class="tx-danger">*</span></label>
+                  <label class="form-control-label">Total Harga HPP + 30% :</label>
                   <input class="form-control" type="text" name="name" disabled>
                 </div>
               </div><!-- col-4 -->    
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label">Total Harga HPP + 40% : <span class="tx-danger">*</span></label>
+                  <label class="form-control-label">Total Harga HPP + 40% :</label>
                   <input class="form-control" type="text" name="name" disabled>
                 </div>
               </div><!-- col-4 -->
