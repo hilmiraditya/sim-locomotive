@@ -206,5 +206,41 @@
 
       });
     </script>
+    <script>
+      function tambahdata(harga, id)
+      {
+        var awal, hasil;
+        awal = parseInt(document.getElementById("hpp_value").value);
+        if (document.getElementById("confirm".concat(id)).checked == true){
+          hasil = awal + harga;
+        }
+        else{
+          hasil = awal - harga;
+        }
+        //value
+        document.getElementById("hpp_value").value = hasil;
+        document.getElementById("hpp30_value").value = hasil + (hasil*0.3);
+        document.getElementById("hpp40_value").value = hasil + (hasil*0.4);
+        document.getElementById("hargaakhir").value = hasil + (hasil*0.4);
+
+        //view
+        document.getElementById("hpp").value = rupiah(document.getElementById("hpp_value").value);
+        document.getElementById("hpp30").value = rupiah(document.getElementById("hpp30_value").value);
+        document.getElementById("hpp40").value = rupiah(document.getElementById("hpp40_value").value);
+      }
+      function rupiah(bilangan)
+      {
+        var number_string = bilangan.toString(),
+          sisa  = number_string.length % 3,
+          rupiah  = number_string.substr(0, sisa),
+          ribuan  = number_string.substr(sisa).match(/\d{3}/g);   
+        if (ribuan) {
+          separator = sisa ? '.' : '';
+          rupiah += separator + ribuan.join('.');
+        }
+        return "Rp. "+rupiah+",-";
+      }
+
+    </script>
   </body>
 </html>

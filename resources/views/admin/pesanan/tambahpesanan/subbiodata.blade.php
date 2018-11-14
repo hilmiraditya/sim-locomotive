@@ -15,19 +15,21 @@
               </div><!-- col-4 -->
               <div class="col-lg-4">
                 <div class="form-group">
-                  <label class="form-control-label">Foto Identitas: <span class="tx-danger">*</span></label>
+                  <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
+                  <input class="form-control" type="text" name="email_klien">
+                </div>
+              </div><!-- col-4 -->
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <div>
+                    <label class="form-control-label">Foto Identitas: <span class="tx-danger">*</span></label>
+                  </div>
                   <label class="custom-file">
                     <input type="file" id="file" class="custom-file-input">
                     <span class="custom-file-control"></span>
                   </label>
                 </div>
               </div>
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Email: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="email_klien">
-                </div>
-              </div><!-- col-4 -->
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Alamat: <span class="tx-danger">*</span></label>

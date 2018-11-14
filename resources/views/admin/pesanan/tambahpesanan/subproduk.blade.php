@@ -1,7 +1,7 @@
       <h6 class="card-body-title">PEMESANAN PRODUK</h6>
           <p>Tekan Checkbox tambah untuk memasukkan item ke dalam pemesanan</p>
           <div class="table-bordered">
-            <table id="datatable1" class="table display responsive nowrap">
+            <table id="datatable1" class="table table-bordered table-responsive">
               <thead>
                 <tr>
                   <th>No</th>
@@ -22,7 +22,8 @@
               		<td>{{ $produk->kuantitas_produk }}</td>
               		<td>{{ $produk->deskripsi_produk }}</td>
               		<td>
-                    <input type="checkbox" name="vehicle" value="{{$produk->id}}">
+                    <input type="checkbox" name="vehicle" id="confirm{{$produk->id}}"
+                    onclick="tambahdata({{$produk->harga_produk}},{{$produk->id}})" value="{{$produk->id}}">
               		</td>
                   <?php $a++; ?>
                   @endforeach
@@ -34,25 +35,28 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Total Harga HPP :</label>
-                  <input class="form-control" type="text" name="name" disabled>
+                  <input type="hidden" id="hpp_value" value="0">
+                  <input class="form-control" type="text" id="hpp" placeholder="Rp. 0" disabled>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Total Harga HPP + 30% :</label>
-                  <input class="form-control" type="text" name="name" disabled>
+                  <input type="hidden" id="hpp30_value" value="0">
+                  <input class="form-control" type="text" id="hpp30" placeholder="Rp. 0" disabled>
                 </div>
               </div><!-- col-4 -->    
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Total Harga HPP + 40% :</label>
-                  <input class="form-control" type="text" name="name" disabled>
+                  <input type="hidden" id="hpp40_value" value="0">
+                  <input class="form-control" type="text" id="hpp40" placeholder="Rp. 0" disabled>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Total Harga Akhir : <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="name">
+                  <input class="form-control" type="text" id="hargaakhir" name="hargaakhir">
                 </div>
               </div><!-- col-4 -->
             </div>         
