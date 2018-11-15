@@ -55,7 +55,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{'/Admin/Pesanan/DaftarPesanan'}}" class="nav-link">Daftar Pesanan</a></li>
-          <li class="nav-item"><a href="{{ '/Admin/Pesanan/TambahPesanan/Biodata' }}" class="nav-link">Tambah Pesanan</a></li>
+          <li class="nav-item"><a href="{{ '/Admin/Pesanan/TambahPesanan' }}" class="nav-link">Tambah Pesanan</a></li>
         </ul>
       </div>
       <br>

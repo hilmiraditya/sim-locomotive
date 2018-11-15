@@ -51,7 +51,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{'/Admin/Pesanan/DaftarPesanan'}}" class="nav-link">Daftar Pesanan</a></li>
-          <li class="nav-item"><a href="{{ '/Admin/Pesanan/TambahPesanan/Biodata' }}" class="nav-link">Tambah Pesanan</a></li>
+          <li class="nav-item"><a href="{{ '/Admin/Pesanan/TambahPesanan' }}" class="nav-link">Tambah Pesanan</a></li>
         </ul>
       </div>
       <br>
@@ -108,25 +108,27 @@
               </ul>
           </div>
           @endif
-          <div id="wizard1">
-            <h3>Biodata</h3>
-            <section>
-              @include('admin.pesanan.tambahpesanan.subbiodata')
-            </section>
-            <h3>Pemesanan Produk</h3>
-            <section>
-              @include('admin.pesanan.tambahpesanan.subproduk')
-            </section>
-            <h3>Produksi</h3>
-            <section>
-              @include('admin.pesanan.tambahpesanan.subproduksi')
-            </section>
-          </div>
+          <form method="post" action="{{url('Admin/Pesanan/TambahPesanan')}}">
+          @csrf
+            <div id="wizard1">
+              <h3>Biodata</h3>
+              <section>
+                @include('admin.pesanan.tambahpesanan.subbiodata')
+              </section>
+              <h3>Pemesanan Produk</h3>
+              <section>
+                @include('admin.pesanan.tambahpesanan.subproduk')
+              </section>
+              <h3>Produksi</h3>
+              <section>
+                @include('admin.pesanan.tambahpesanan.subproduksi')
+              </section>
+            </div>
+          </form>
         </div><!-- card -->
       </div><!-- sl-pagebody -->
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-
     <script src="{{ url('admin_page/lib/jquery/jquery.js') }}"></script>
     <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>
     <script src="{{ url('admin_page/lib/bootstrap/bootstrap.js') }}"></script>
@@ -240,7 +242,11 @@
         }
         return "Rp. "+rupiah+",-";
       }
-
     </script>
+    <div>
+      @foreach($view['produk'] as $produk)
+        <input type="hidden" name="pemesananproduk{{$produk->id}}" value="0">
+      @endforeach
+    </div>
   </body>
 </html>

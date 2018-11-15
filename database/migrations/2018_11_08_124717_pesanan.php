@@ -20,14 +20,14 @@ class Pesanan extends Migration
             $table->string('noidentitas_klien');
             $table->string('alamat_klien',100);
             $table->string('email_klien');
-            $table->string('perusahaan_klien')->default('-');
-            $table->string('jabatan_klien')->default('-');
+            $table->string('perusahaan_klien')->nullable();
+            $table->string('jabatan_klien')->nullable();
             $table->string('notelp_klien');
             $table->string('nowhatsapp_klien');
-            $table->string('instagram_klien')->default('-');
-            $table->string('facebook_klien')->default('-');
-            $table->string('twitter_klien')->default('-');
-            $table->string('fotoidentitas_klien');
+            $table->string('instagram_klien')->nullable();
+            $table->string('facebook_klien')->nullable();
+            $table->string('twitter_klien')->nullable();
+            $table->string('fotoidentitas_klien')->nullable();
             
             //agenda produksi
             $table->string('deskripsi_agenda_produksi',300);
@@ -39,7 +39,7 @@ class Pesanan extends Migration
             $table->date('serah_terimah');
 
             //catatan lain
-            $table->string('catatan_lain',300)->default('-');
+            $table->string('catatan_lain',300)->nullable();
 
             //status pemesanan
             $table->integer('status_pesanan')->default(1);

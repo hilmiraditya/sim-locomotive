@@ -10,7 +10,7 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">No Identitas: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="noktp_klien">
+                  <input class="form-control" type="text" name="noidentitas_klien">
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
