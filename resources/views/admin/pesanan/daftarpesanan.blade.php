@@ -32,8 +32,9 @@
                   <th>No</th>
                   <th>Nama Client</th>
                   <th>Unit</th>
-                  <th>Jadwal Revisi</th>
                   <th>Kontak</th>
+                  <th>Email</th>
+                  <th>Progress</th>
                   <th>Input</th>
                   <th>Opsi</th>
                 </tr>
@@ -45,10 +46,31 @@
               		<td>{{ $a }}</td>
               		<td>{{ $pesanan->nama_klien }}</td>
               		<td>{{ $pesanan->unit_produksi }}</td>
-              		<td>{{ $pesanan->created_at }}</td>
-              		<td>{{ $produk->deskripsi_produk }}</td>
+                  <td>
+                    <b>WhatsApp</b> : {{ $pesanan->nowhatsapp_klien}}<br>
+                    <b>No. Handphone</b> : {{ $pesanan->notelp_klien }}
+                  </td>
+                  <td>
+                    @if($pesanan->isEmailed == 0)
+                      <a class="btn btn-sm btn-warning">Belum dikirim</a>
+                    @else 
+                      <a class="btn btn-sm btn-success">Sudah dikirim</a>
+                    @endif
+                  </td>
+                  <td style="color: white;">
+                  @if($pesanan->status_pesanan == 0)
+                    <a class="btn btn-sm btn-warning">Dibatalkan</a>
+                  @elseif($pesanan->status_pesanan == 1)
+                    <a class="btn btn-sm btn-primary">Sedang Berjalan</a>
+                  @else
+                    <a class="btn btn-sm btn-success">Selesai</a>
+                  @endif
+                  </td>
+              		<td>{{ $pesanan->User->name }}</td>
               		<td style="color: white;">
-              			<a href="#" class="btn btn-sm btn-primary">Lihat Detil</a>
+              			<a href="{{url('Admin/Pesanan/LihatPesanan/'.$pesanan->id)}}" class="btn btn-sm btn-primary">Detil</a>
+                    <a href="{{ url('Admin/Pesanan/KirimEmail/'.$pesanan->id) }}" class="btn btn-sm btn-success">Email</a>
+                    <a href="{{url('Admin/Pesanan/HapusPesanan/'.$pesanan->id)}}" class="btn btn-sm btn-danger">Hapus</a>
               		</td>
                   <?php $a++; ?>
                   @endforeach

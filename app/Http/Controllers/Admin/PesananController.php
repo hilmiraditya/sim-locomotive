@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
+use Carbon\Carbon as Carbon;
 use App\Model\Pesanan;
 use App\Model\Produk;
 use App\Model\OrderProduk;
@@ -81,8 +82,33 @@ class PesananController extends Controller
         $pesanan->nama_penginput = Auth::user()->name;
 
         $pesanan->save();
-
-        return 'berhasil hehe';
-    	//return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil ditambah');
+        
+    	return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil ditambah');
+    }
+    public function detil_pesanan($id)
+    {
+        $view = [
+            'pesanan' => Pesanan::find($id)->first(),
+            'user'=> Auth::user(),
+            'produk' => Produk::all()
+        ];
+        return view('admin.pesanan.lihatpesanan.lihat')->with(compact('view'));
+    }
+    public function ubah_pesanan($id)
+    {
+        return 'masuk';
+    }
+    public function get_ubah_pesanan(Request $request)
+    {
+        return 'masuk get pesanan';
+    }
+    public function hapus_pesanan($id)
+    {
+        Pesanan::find($id)->delete();
+        return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil dihapus');
+    }
+    public function kirim_email($id)
+    {
+        return 'masuk email';
     }
 }
