@@ -9,8 +9,8 @@
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
-          <h5>Produk</h5>
-          <p>List Daftar Produk</p>
+          <h5>Daftar Pesanan</h5>
+          <p>List Daftar Pesanan</p>
         </div><!-- sl-page-title -->
         <div class="card pd-20 pd-sm-40">
         @if($view['pesanan']->count() != 0)
