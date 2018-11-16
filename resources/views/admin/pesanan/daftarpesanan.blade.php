@@ -47,8 +47,8 @@
               		<td>{{ $pesanan->nama_klien }}</td>
               		<td>{{ $pesanan->unit_produksi }}</td>
                   <td>
-                    <b>WhatsApp</b> : {{ $pesanan->nowhatsapp_klien}}<br>
-                    <b>No. Handphone</b> : {{ $pesanan->notelp_klien }}
+                    <img style="width: 12px;" src="{{url('images/whatsapp.png')}}"> : {{ $pesanan->nowhatsapp_klien}}<br>
+                    <img style="width: 12px;" src="{{url('images/phone.png')}}"> : {{ $pesanan->notelp_klien }}
                   </td>
                   <td>
                     @if($pesanan->isEmailed == 0)

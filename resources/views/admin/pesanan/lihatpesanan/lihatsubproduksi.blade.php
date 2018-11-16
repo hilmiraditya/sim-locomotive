@@ -33,7 +33,7 @@
               </div>
               </div><!-- col-4 -->
               <div class="col-lg-6">
-                <p class="mg-b-10">Jadwal Revisi 1 : <span class="tx-danger">*</span></p>
+                <p class="mg-b-10">Jadwal Rev isi 1 : <span class="tx-danger">*</span></p>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
                 <input type="date" name="jadwal_1" class="form-control" value="{{$view['pesanan']->jadwal_1}}" disabled>
