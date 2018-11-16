@@ -49,22 +49,10 @@
                   <input class="form-control" type="text" name="nowhatsapp_klien">
                 </div>
               </div><!-- col-4 -->
-              <div class="col-lg-4">
+              <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Instagram :</label>
                   <input class="form-control" type="text" name="instagram_klien">
-                </div>
-              </div><!-- col-4 -->
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Twitter :</label>
-                  <input class="form-control" type="text" name="twiter_klien">
-                </div>
-              </div><!-- col-4 -->
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Facebook :</label>
-                  <input class="form-control" type="text" name="facebook_klien">
                 </div>
               </div><!-- col-4 -->
             </div><!-- row -->

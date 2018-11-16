@@ -174,6 +174,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         //Evercode1\TraitMaker\TraitMakerServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Matriphe\Manekin\ManekinServiceProvider::class,
     ],
 
     /*

@@ -25,9 +25,6 @@ class Pesanan extends Migration
             $table->string('notelp_klien');
             $table->string('nowhatsapp_klien');
             $table->string('instagram_klien')->nullable();
-            $table->string('facebook_klien')->nullable();
-            $table->string('twitter_klien')->nullable();
-            $table->string('fotoidentitas_klien')->nullable();
             
             //agenda produksi
             $table->string('deskripsi_agenda_produksi',300);

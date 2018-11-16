@@ -49,22 +49,10 @@
                   <input class="form-control" type="text" value="{{ $view['pesanan']->nowhatsapp_klien }}" name="nowhatsapp_klien" disabled>
                 </div>
               </div><!-- col-4 -->
-              <div class="col-lg-4">
+              <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Instagram :</label>
                   <input class="form-control" type="text" value="{{ $view['pesanan']->instagram_klien }}" name="instagram_klien" disabled>
-                </div>
-              </div><!-- col-4 -->
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Twitter :</label>
-                  <input class="form-control" type="text" value="{{ $view['pesanan']->twitter_klien }}" name="twiter_klien" disabled>
-                </div>
-              </div><!-- col-4 -->
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Facebook :</label>
-                  <input class="form-control" type="text" value="{{ $view['pesanan']->facebook_klien }}" name="facebook_klien" disabled>
                 </div>
               </div><!-- col-4 -->
             </div><!-- row -->
