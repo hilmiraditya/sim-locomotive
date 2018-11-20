@@ -51,6 +51,7 @@ class PesananController extends Controller
         ]);
 
         $pesanan = New Pesanan;
+
         //biodata
         $pesanan->nama_klien = $request->get('nama_klien');
         $pesanan->noidentitas_klien = $request->get('noidentitas_klien');
@@ -169,6 +170,7 @@ class PesananController extends Controller
     public function kirim_email($id)
     {
         $email = Pesanan::find($id)->first()->email;
+        dd($email);
         return 'masuk email';
     }
 }

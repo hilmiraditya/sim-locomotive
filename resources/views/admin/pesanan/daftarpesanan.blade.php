@@ -26,7 +26,7 @@
            </div>       
           @endif
           <div class="table-wrapper">
-            <table id="datatable1" class="table display responsive nowrap">
+            <table id="datatable1" class="table display responsive">
               <thead>
                 <tr>
                   <th>No</th>
