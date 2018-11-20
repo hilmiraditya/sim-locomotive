@@ -168,6 +168,7 @@ class PesananController extends Controller
     }
     public function kirim_email($id)
     {
+        $email = Pesanan::find($id)->first()->email;
         return 'masuk email';
     }
 }

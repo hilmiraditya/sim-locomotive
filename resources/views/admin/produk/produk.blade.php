@@ -26,7 +26,7 @@
            </div>       
           @endif
           <div class="table-wrapper">
-            <table id="datatable1" class="table display responsive nowrap">
+            <table id="datatable1" class="table table-bordered table-responsive">
               <thead>
                 <tr>
                   <th>No</th>
@@ -48,6 +48,7 @@
               		<td>{{ $produk->deskripsi_produk }}</td>
               		<td style="color: white;">
               			<a href="{{ url('Admin/Produk/UbahProduk/'.$produk->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                    
               			<a href="{{ url('Admin/Produk/HapusProduk/'.$produk->id) }}" class="btn btn-sm btn-danger">Hapus</a>
               		</td>
                   <?php $a++; ?>
