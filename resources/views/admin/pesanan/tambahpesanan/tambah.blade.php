@@ -147,7 +147,7 @@
         var temp_pesanan = document.getElementById("pilihpesananproduk").value;
         awal = parseInt(document.getElementById("hpp_value").value);
         if (document.getElementById("confirm".concat(id)).checked == true){
-          document.getElementById("pilihpesananproduk").value =  $id + '-';
+          //document.getElementById("pilihpesananproduk").value =  $id + '-';
           hasil = awal + harga;
         }
         else{
