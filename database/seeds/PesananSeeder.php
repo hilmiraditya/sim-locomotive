@@ -40,7 +40,7 @@ class PesananSeeder extends Seeder
         	//total harga
         	$pesanan->total_harga = rand(800000,10000000);
         	//nama penginput
-        	$pesanan->user_id = 2;
+        	$pesanan->user_id = 1;
         	$pesanan->nama_penginput = 'Hilmi Raditya';
 
         	$pesanan->save();

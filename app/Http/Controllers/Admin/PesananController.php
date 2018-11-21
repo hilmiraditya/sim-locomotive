@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
+use DB;
 use App\Model\Pesanan;
 use App\Model\Produk;
 use App\Model\OrderProduk;
@@ -15,6 +16,36 @@ class PesananController extends Controller
     public function __construct()
     {
         date_default_timezone_set('Asia/Bangkok');
+    }
+    private function input_request($pesanan, $request)
+    {
+            //biodata
+            $pesanan->nama_klien = $request->get('nama_klien');
+            $pesanan->noidentitas_klien = $request->get('noidentitas_klien');
+            $pesanan->alamat_klien = $request->get('alamat_klien');
+            $pesanan->email_klien = $request->get('email_klien');
+            $pesanan->perusahaan_klien = $request->get('perusahaan_klien');
+            $pesanan->jabatan_klien = $request->get('jabatan_klien');
+            $pesanan->notelp_klien = $request->get('notelp_klien');
+            $pesanan->nowhatsapp_klien = $request->get('nowhatsapp_klien');
+            $pesanan->instagram_klien = $request->get('instagram_klien');
+            //agenda produksi
+            $pesanan->deskripsi_agenda_produksi = $request->get('deskripsi_agenda_produksi');
+            //jadwal revisi dan serah terima
+            $pesanan->preview_pertama = $request->get('preview_pertama');
+            $pesanan->jadwal_1 = $request->get('jadwal_1');
+            $pesanan->jadwal_2 = $request->get('jadwal_2');
+            $pesanan->serah_terimah = $request->get('serah_terimah');
+            //catatan lain
+            $pesanan->catatan_lain = $request->get('catatan_lain');
+            //unit produksi
+            $pesanan->unit_produksi = $request->get('unit_produksi');
+            //total harga
+            $pesanan->total_harga = $request->get('total_harga');
+            //nama penginput
+            $pesanan->user_id = Auth::id();
+            $pesanan->nama_penginput = Auth::user()->name;
+            $pesanan->save(); 
     }
     
     public function index()
@@ -49,44 +80,7 @@ class PesananController extends Controller
            	'unit_produksi'	=>	'required',
            	'total_harga'	=> 'integer'
         ]);
-
-        $pesanan = New Pesanan;
-
-        //biodata
-        $pesanan->nama_klien = $request->get('nama_klien');
-        $pesanan->noidentitas_klien = $request->get('noidentitas_klien');
-        $pesanan->alamat_klien = $request->get('alamat_klien');
-        $pesanan->email_klien = $request->get('email_klien');
-        $pesanan->perusahaan_klien = $request->get('perusahaan_klien');
-        $pesanan->jabatan_klien = $request->get('jabatan_klien');
-        $pesanan->notelp_klien = $request->get('notelp_klien');
-        $pesanan->nowhatsapp_klien = $request->get('nowhatsapp_klien');
-        $pesanan->instagram_klien = $request->get('instagram_klien');
-
-        //agenda produksi
-        $pesanan->deskripsi_agenda_produksi = $request->get('deskripsi_agenda_produksi');
-
-        //jadwal revisi dan serah terima
-        $pesanan->preview_pertama = $request->get('preview_pertama');
-        $pesanan->jadwal_1 = $request->get('jadwal_1');
-        $pesanan->jadwal_2 = $request->get('jadwal_2');
-        $pesanan->serah_terimah = $request->get('serah_terimah');
-
-        //catatan lain
-        $pesanan->catatan_lain = $request->get('catatan_lain');
-
-        //unit produksi
-        $pesanan->unit_produksi = $request->get('unit_produksi');
-
-        //total harga
-        $pesanan->total_harga = $request->get('total_harga');
-        
-        //nama penginput
-        $pesanan->user_id = Auth::id();
-        $pesanan->nama_penginput = Auth::user()->name;
-
-        $pesanan->save();
-        
+        $this->input_request(New Pesanan,$request);
     	return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil ditambah');
     }
     public function detil_pesanan($id)
@@ -123,43 +117,7 @@ class PesananController extends Controller
             'unit_produksi' =>  'required',
             'total_harga'   => 'integer'
         ]);
-
-        $pesanan = Pesanan::find($id);
-        //biodata
-        $pesanan->nama_klien = $request->get('nama_klien');
-        $pesanan->noidentitas_klien = $request->get('noidentitas_klien');
-        $pesanan->alamat_klien = $request->get('alamat_klien');
-        $pesanan->email_klien = $request->get('email_klien');
-        $pesanan->perusahaan_klien = $request->get('perusahaan_klien');
-        $pesanan->jabatan_klien = $request->get('jabatan_klien');
-        $pesanan->notelp_klien = $request->get('notelp_klien');
-        $pesanan->nowhatsapp_klien = $request->get('nowhatsapp_klien');
-        $pesanan->instagram_klien = $request->get('instagram_klien');
-
-        //agenda produksi
-        $pesanan->deskripsi_agenda_produksi = $request->get('deskripsi_agenda_produksi');
-
-        //jadwal revisi dan serah terima
-        $pesanan->preview_pertama = $request->get('preview_pertama');
-        $pesanan->jadwal_1 = $request->get('jadwal_1');
-        $pesanan->jadwal_2 = $request->get('jadwal_2');
-        $pesanan->serah_terimah = $request->get('serah_terimah');
-
-        //catatan lain
-        $pesanan->catatan_lain = $request->get('catatan_lain');
-
-        //unit produksi
-        $pesanan->unit_produksi = $request->get('unit_produksi');
-
-        //total harga
-        $pesanan->total_harga = $request->get('total_harga');
-        
-        //nama penginput
-        $pesanan->user_id = Auth::id();
-        $pesanan->nama_penginput = Auth::user()->name;
-
-        $pesanan->save();
-        
+        $this->input_request(Pesanan::find($id),$request);
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil diupdate');
     }
     public function hapus_pesanan($id)
@@ -169,8 +127,7 @@ class PesananController extends Controller
     }
     public function kirim_email($id)
     {
-        $email = Pesanan::find($id)->first()->email;
-        dd($email);
-        return 'masuk email';
+        $email = Pesanan::find($id)->first()->email_klien;
+        return $email;
     }
 }
