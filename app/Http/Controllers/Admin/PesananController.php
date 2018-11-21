@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use Auth;
 use DB;
 use Validator;
+use Mail;
 use App\Model\Pesanan;
 use App\Model\Produk;
 use App\Model\OrderProduk;
+use App\Mail\EmailPesanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PesananRequest;
@@ -89,9 +91,10 @@ class PesananController extends Controller
         ];
         return view('admin.pesanan.ubahpesanan.ubah')->with(compact('view'));
     }
-    public function get_ubah_pesanan(Request $request, $id)
+    public function get_ubah_pesanan(PesananRequest $request, $id)
     {
-        $this->validation_request($request);
+        dd('masuk');
+        $validated = $request->validated();
         $this->input_request(Pesanan::find($id),$request);
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil diupdate');
     }
@@ -102,7 +105,9 @@ class PesananController extends Controller
     }
     public function kirim_email($id)
     {
-        $email = Pesanan::find($id)->first()->email_klien;
-        return $email;
+        //$email = Pesanan::find($id)->first()->email_klien;
+        Mail::to('raditya113@gmail.com')->send(new EmailPesanan());
+        return 'berhasil';
+        //return $email;
     }
 }

@@ -108,7 +108,7 @@
               </ul>
           </div>
           @endif
-          <form method="post" action="{{url('Admin/Pesanan/UbahPesanan').$view['pesanan']->id}}">
+          <form method="post" action="{{url('Admin/Pesanan/GetUbahPesanan/').$view['pesanan']->id}}">
           @csrf
             <div id="wizard1">
               <h3>Biodata</h3>
