@@ -9,6 +9,8 @@ use URL;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AkunRequest;
+use App\Http\Requests\UpdateAkunRequest;
 
 class AkunController extends Controller
 {
@@ -29,14 +31,9 @@ class AkunController extends Controller
         $view = ['user' => Auth::user()];
         return view('admin.akun.tambahakun')->with(compact('view'));
     }
-    public function createdata(Request $request)
+    public function createdata(AkunRequest $request)
     {
-        $validator  = $request->validate([
-            'name'      => 'required',
-            'email'     => 'unique:users,email|required',
-            'password'  => 'required',
-            'role'      => 'required'
-        ]);
+        $validated = $request->validated();
         $akun = new User;
         $akun->name = $request->get('name');
         $akun->email = $request->get('email');
@@ -54,11 +51,9 @@ class AkunController extends Controller
         ];
         return view('admin.akun.updateakun')->with(compact('view'));
     }
-    public function updatedata(Request $request)
+    public function updatedata(UpdateAkunRequest $request)
     {
-        $validator  = $request->validate([
-            'name'      => 'required'
-        ]);
+        $validated = $request->validated();       
         $akun = User::find($request->get('id'));
         $akun->name = $request->get('name');
         if($request->get('password') != NULL){

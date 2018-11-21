@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use App\Model\Produk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProdukRequest;
+use App\Http\Requests\UpdateProdukRequest;
 
 class ProdukController extends Controller
 {
@@ -32,12 +34,9 @@ class ProdukController extends Controller
     	];
     	return view('admin.produk.updateproduk')->with(compact('view'));    	
     }
-    public function updatedata(Request $request)
+    public function updatedata(UpdateProdukRequest $request)
     {
-        $validator  = $request->validate([
-            'nama_produk'      => 'required',
-            'harga_produk'		=> 'numeric',
-        ]);
+        $validated = $request->validated();        
         $produk = Produk::find($request->get('id'));
         $produk->nama_produk = $request->get('nama_produk');
         $produk->harga_produk = $request->get('harga_produk');
@@ -53,13 +52,9 @@ class ProdukController extends Controller
     	$view = ['user' => Auth::user()];
     	return view('admin.produk.tambahproduk')->with(compact('view'));
     }
-    public function createdata(Request $request)
+    public function createdata(ProdukRequest $request)
     {
-        $validator  = $request->validate([
-            'nama_produk'      => 'required',
-            'harga_produk'		=> 'numeric',
-            'kuantitas_produk'	=> 'numeric'
-        ]);
+        $validated = $request->validated();
         $produk = new Produk;
         $produk->nama_produk = $request->get('nama_produk');
         $produk->harga_produk = $request->get('harga_produk');

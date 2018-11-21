@@ -6,6 +6,7 @@ use Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PengaturanAkunRequest;
 
 class PengaturanAkunController extends Controller
 {
@@ -18,11 +19,9 @@ class PengaturanAkunController extends Controller
     	$view = ['user' => Auth::user()];
     	return view('admin.pengaturanakun.pengaturanakun')->with(compact('view'));
     }
-    public function updatedata(Request $request)
+    public function updatedata(PengaturanAkunRequest $request)
     {
-        $validator  = $request->validate([
-            'name'      => 'required',
-        ]);
+        $validated = $request->validated();
         $akun = User::find($request->get('id'));
         $akun->name = $request->get('name');
         if($request->get('password') != NULL){

@@ -10,61 +10,13 @@ use App\Model\Produk;
 use App\Model\OrderProduk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PesananRequest;
 
 class PesananController extends Controller
 {
     public function __construct()
     {
         date_default_timezone_set('Asia/Bangkok');
-    }
-    private function validation_request($request)
-    {
-        return $request->validate([
-            'nama_klien'      => 'required',
-            'noidentitas_klien'      => 'required',
-            'alamat_klien'      => 'required',
-            'email_klien'      => 'email',
-            'notelp_klien'      => 'required',
-            'nowhatsapp_klien'      => 'required',
-            'preview_pertama'       => 'date',
-            'jadwal_1'      => 'date',
-            'jadwal_2'      => 'date',
-            'serah_terimah'     => 'date',
-            'unit_produksi' =>  'required',
-            'total_harga'   => 'integer'
-        ]);
-    }
-    private function validation_request_1($request)
-    {
-        $rules = [
-            'nama_klien'      => 'required',
-            'noidentitas_klien'      => 'required',
-            'alamat_klien'      => 'required',
-            'email_klien'      => 'email',
-            'notelp_klien'      => 'required',
-            'nowhatsapp_klien'      => 'required',
-            'preview_pertama'       => 'date',
-            'jadwal_1'      => 'date',
-            'jadwal_2'      => 'date',
-            'serah_terimah'     => 'date',
-            'unit_produksi' =>  'required',
-            'total_harga'   => 'integer'
-        ];
-        $messages = [
-            'nama_klien.required' => 'Nama tidak boleh kosong.',
-            'noidentitas_klien.required' => 'Nomor Identitas tidak boleh kosong.',
-            'alamat_klien.required' => 'Alamat tidak boleh kosong.',  
-            'email_klien.email' => 'Format email tidak sesuai.',   
-            'notelp_klien.required' => 'Nomor Telp tidak boleh kosong.',
-            'nowhatsapp_klien.required' => 'Nomor Telp tidak boleh kosong.',
-            'preview_pertama.date' => 'Input Preview pertama tidak sesuai atribut tanggal.',
-            'jadwal_1.date' => 'Input Preview pertama tidak sesuai atribut tanggal.',         
-            'jadwal_2.date' => 'Input Preview kedua tidak sesuai atribut tanggal.',  
-            'serah_terimah.date' => 'Input Preview pertama tidak sesuai atribut tanggal.',
-            'unit_produksi.required' => 'Harap memilih unit produksi.',
-            'total_harga.integer' => 'Input harga hanya menggunakan angka.'
-        ];
-        return Validator::make($request, $rules, $messages);
     }
     private function input_request($pesanan, $request)
     {
@@ -113,9 +65,9 @@ class PesananController extends Controller
         ];
     	return view('admin.pesanan.tambahpesanan.tambah')->with(compact('view'));
     }
-    public function get_tambahpesanan_biodata(Request $request)
+    public function get_tambahpesanan_biodata(PesananRequest $request)
     {
-        $this->validation_request_1($request);
+        $validated = $request->validated();
         $this->input_request(New Pesanan,$request);
     	return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil ditambah');
     }
