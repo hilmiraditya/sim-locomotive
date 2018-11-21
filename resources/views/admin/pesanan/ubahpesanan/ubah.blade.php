@@ -92,13 +92,13 @@
       <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item" href="index.html">Sistem Information Management</a>
         <a class="breadcrumb-item" href="index.html">Pesanan</a>
-        <span class="breadcrumb-item active">TambahPesanan</span>
+        <span class="breadcrumb-item active">Ubah Pesanan</span>
       </nav>
 
       <div class="sl-pagebody">
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Pemesanan Produk</h6>
-          <p class="mg-b-20 mg-sm-b-30">Silahkan di isi form yang tersedia dibawah ini</p>
+          <h6 class="card-body-title">Ubah Pesanan</h6>
+          <p class="mg-b-20 mg-sm-b-30">Pesanan atas nama : <b>{{ $view['pesanan']->nama_klien }}</b> | Dipesan pada : <b>{{$view['pesanan']->created_at}}</b></p>
           @if (count($errors) > 0)
           <div class = "alert alert-danger">
               <ul>
@@ -108,20 +108,20 @@
               </ul>
           </div>
           @endif
-          <form method="post" action="{{url('Admin/Pesanan/TambahPesanan')}}">
+          <form method="post" action="{{url('Admin/Pesanan/UbahPesanan').$view['pesanan']->id}}">
           @csrf
             <div id="wizard1">
               <h3>Biodata</h3>
               <section>
-                @include('admin.pesanan.tambahpesanan.subbiodata')
+                @include('admin.pesanan.ubahpesanan.ubahsubbiodata')
               </section>
               <h3>Pemesanan Produk</h3>
               <section>
-                @include('admin.pesanan.tambahpesanan.subproduk')
+                @include('admin.pesanan.ubahpesanan.ubahsubproduk')
               </section>
               <h3>Produksi</h3>
               <section>
-                @include('admin.pesanan.tambahpesanan.subproduksi')
+                @include('admin.pesanan.ubahpesanan.ubahsubproduksi')
               </section>
             </div>
           </form>

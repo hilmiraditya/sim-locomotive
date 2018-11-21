@@ -56,7 +56,7 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="form-control-label">Total Harga Akhir : <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" id="hargaakhir" name="total_harga">
+                  <input class="form-control" type="text" id="hargaakhir" name="total_harga" value="{{ "Rp " . number_format($view['pesanan']->total_harga,0,',','.').",-" }}">
                 </div>
               </div><!-- col-4 -->
             </div>         
