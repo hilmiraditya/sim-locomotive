@@ -50,7 +50,7 @@
                     <img style="width: 12px;" src="{{url('images/whatsapp.png')}}"> : {{ $pesanan->nowhatsapp_klien}}<br>
                     <img style="width: 12px;" src="{{url('images/phone.png')}}"> : {{ $pesanan->notelp_klien }}
                   </td>
-                  <td>
+                  <td style="color: white;">
                     @if($pesanan->isEmailed == 0)
                       <a class="btn btn-sm btn-warning">Belum dikirim</a>
                     @else 

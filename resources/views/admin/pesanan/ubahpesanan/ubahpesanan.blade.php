@@ -108,11 +108,11 @@
               </ul>
           </div>
           @endif
-          <form method="post" action="{{url('Admin/Pesanan/GetUbahPesanan/').$view['pesanan']->id}}">
+          <form method="post" action="{{url('Admin/Pesanan/Percobaan')}}">
           @csrf
             <div id="wizard1">
               <h3>Biodata</h3>
-              <section>
+              <section>s
                 @include('admin.pesanan.ubahpesanan.ubahsubbiodata')
               </section>
               <h3>Pemesanan Produk</h3>

@@ -89,15 +89,28 @@ class PesananController extends Controller
             'user'=> Auth::user(),
             'produk' => Produk::all()
         ];
-        return view('admin.pesanan.ubahpesanan.ubah')->with(compact('view'));
+        return view('admin.pesanan.ubahpesanan.ubahpesanan')->with(compact('view'));
+    }
+    public function ubahpesanan($id)
+    {
+        $view = [
+            'pesanan' => Pesanan::find($id)->first(),
+            'user'=> Auth::user(),
+            'produk' => Produk::all()
+        ];
+        return view('admin.pesanan.ubahpesanan.ubahpesanan')->with(compact('view'));
     }
     public function get_ubah_pesanan(PesananRequest $request, $id)
     {
-        dd('masuk');
         $validated = $request->validated();
         $this->input_request(Pesanan::find($id),$request);
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil diupdate');
     }
+    public function percobaan(Request $request)
+    {
+        return 'masuk pak eko';
+    }
+    
     public function hapus_pesanan($id)
     {
         Pesanan::find($id)->delete();
@@ -105,6 +118,7 @@ class PesananController extends Controller
     }
     public function kirim_email_pesanan($id)
     {
+        $pesanan = Pesanan::find($id)->first(); 
         $data = array(
             'pesanan'=> Pesanan::find($id)->first(),
             'waktu' =>  Carbon::now()
@@ -113,7 +127,8 @@ class PesananController extends Controller
             $message->to('raditya113@gmail.com', 'Locomotive Wedding')->subject('Surat Persetujuan Produksi');
             $message->from('locomotivewedding@gmail.com', 'Locomotive Wedding');
         });
-        Pesanan::find($id)->first()->isEmailed = 1;
+        $pesanan->isEmailed = 1;
+        $pesanan->save();
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', "Invoice pesanan atas nama ".$data['pesanan']->nama_klien." berhasil dikirim ke ".$data['pesanan']->email_klien);
     }
 }
