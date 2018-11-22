@@ -43,8 +43,9 @@
           </div>
           @endif
             <div id="wizard1">
-              <h3>Biodata</h3>
+              <h3>Biodata dan Progress</h3>
               <section>
+                @include('admin.pesanan.lihatpesanan.lihatsubprogress')
                 @include('admin.pesanan.lihatpesanan.lihatsubbiodata')
               </section>
               <h3>Pemesanan Produk</h3>
@@ -60,6 +61,35 @@
       </div><!-- sl-pagebody -->
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
+    <!-- Modal -->
+    <div class="modal fade" id="modalpesanan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Progress Pesanan :</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="post" action="{{ url('Admin/Pesanan/UbahStatusPesanan/'.$view['pesanan']->id) }}">
+          @csrf
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleFormControlSelect2">Status Pesanan :</label>
+              <select class="form-control" name="status_pesanan">
+                <option value="0">Dibatalkan</option>
+                <option value="1">Sedang Berjalan</option>
+                <option value="2">Sudah Selesai</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Ubah Progress</button>
+          </div>
+          </form>
+        </div>
+      </div>
+</div>
     <script src="{{ url('admin_page/lib/jquery/jquery.js') }}"></script>
     <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>
     <script src="{{ url('admin_page/lib/bootstrap/bootstrap.js') }}"></script>

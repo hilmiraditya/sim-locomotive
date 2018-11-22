@@ -160,10 +160,12 @@ class PesananController extends Controller
         $pesanan->save();
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', "Invoice pesanan atas nama ".$data['pesanan']->nama_klien." berhasil dikirim ke ".$data['pesanan']->email_klien);
     }
-    public function ubah_status_pemesanan($id)
+    public function ubah_status_pesanan(Request $request, $id)
     {
         $pesanan = Pesanan::find($id)->first();
         // status pesanan : 0 = dibatalkan, 1 = sedang berjalan, 2 = sudah selesai
+        $pesanan->status_pesanan = $request->get('status_pesanan');
+        $pesanan->save();
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Status pesanan atas nama '.$pesanan->nama_penginput.' berhasil diubah');   
     }
 }
