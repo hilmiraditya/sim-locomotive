@@ -10,7 +10,6 @@ use Carbon\Carbon;
 use App\Model\Pesanan;
 use App\Model\Produk;
 use App\Model\OrderProduk;
-use App\Mail\EmailPesanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PesananRequest;
@@ -104,13 +103,6 @@ class PesananController extends Controller
         Pesanan::find($id)->delete();
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil dihapus');
     }
-    public function kirim_email($id)
-    {
-        $pesanan = Pesanan::find($id)->first();
-        Mail::to('raditya113@gmail.com')->send(new EmailPesanan());
-        $pesanan->isEmailed = 1;
-        return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Invoice pesanan atas nama '.$pesanan->nama_klien.' berhasil dikirim ke '.$pesanan->email_klien);
-    }
     public function kirim_email_pesanan($id)
     {
         $data = array(
@@ -122,6 +114,6 @@ class PesananController extends Controller
             $message->from('locomotivewedding@gmail.com', 'Locomotive Wedding');
         });
         Pesanan::find($id)->first()->isEmailed = 1;
-        return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Invoice pesanan atas nama '.$pesanan->nama_klien.' berhasil dikirim ke '.$pesanan->email_klien);
+        return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', "Invoice pesanan atas nama ".$data['pesanan']->nama_klien." berhasil dikirim ke ".$data['pesanan']->email_klien);
     }
 }
