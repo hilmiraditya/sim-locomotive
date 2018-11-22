@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('UbahPesanan/{id}', 'Admin\PesananController@ubah_pesanan');
       Route::post('GetUbahPesanan/{id}', 'Admin\OIIIBANGSATPesananController@get_ubah_pesanan');
       Route::get('HapusPesanan/{id}', 'Admin\PesananController@hapus_pesanan');
-      Route::get('KirimEmail/{id}', 'Admin\PesananController@kirim_email');
+      Route::get('KirimEmail/{id}', 'Admin\PesananController@kirim_email_pesanan');
     });
     Route::get('PengaturanAkun', 'Admin\PengaturanAkunController@update');
     Route::post('PengaturanAkun', 'Admin\PengaturanAkunController@updatedata');

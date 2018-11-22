@@ -6,6 +6,7 @@ use Auth;
 use DB;
 use Validator;
 use Mail;
+use Carbon\Carbon;
 use App\Model\Pesanan;
 use App\Model\Produk;
 use App\Model\OrderProduk;
@@ -105,9 +106,22 @@ class PesananController extends Controller
     }
     public function kirim_email($id)
     {
-        //$email = Pesanan::find($id)->first()->email_klien;
+        $pesanan = Pesanan::find($id)->first();
         Mail::to('raditya113@gmail.com')->send(new EmailPesanan());
-        return 'berhasil';
-        //return $email;
+        $pesanan->isEmailed = 1;
+        return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Invoice pesanan atas nama '.$pesanan->nama_klien.' berhasil dikirim ke '.$pesanan->email_klien);
+    }
+    public function kirim_email_pesanan($id)
+    {
+        $data = array(
+            'pesanan'=> Pesanan::find($id)->first(),
+            'waktu' =>  Carbon::now()
+        );
+        Mail::send('admin.pesanan.email.email', $data, function($message) {
+            $message->to('raditya113@gmail.com', 'Locomotive Wedding')->subject('Surat Persetujuan Produksi');
+            $message->from('locomotivewedding@gmail.com', 'Locomotive Wedding');
+        });
+        Pesanan::find($id)->first()->isEmailed = 1;
+        return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Invoice pesanan atas nama '.$pesanan->nama_klien.' berhasil dikirim ke '.$pesanan->email_klien);
     }
 }

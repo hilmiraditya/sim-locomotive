@@ -28,6 +28,10 @@ class EmailPesanan extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.pesanan.email');
+        return $this
+            ->from('locomotivewedding@gmail.com', 'Locomotive Wedding')
+            ->subject('Surat Persetujuan Produksi')
+            ->text('admin.pesanan.email.text')
+            ->view('admin.pesanan.email.email');
     }
 }
