@@ -19,13 +19,9 @@ class OrderProduk extends Migration
             $table->integer('harga_produk');
             $table->integer('kuantitas_produk');
             $table->string('deskripsi_produk', 200);
-
             $table->unsignedInteger('produk_id');
             $table->foreign('produk_id')->references('id')->on('produk');
-
-            $table->unsignedInteger('pesanan_id');
-            $table->foreign('pesanan_id')->references('id')->on('pesanan');
-
+            $table->integer('pesanan_id');
             $table->timestamps();
         });
     }

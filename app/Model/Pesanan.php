@@ -36,16 +36,14 @@ class Pesanan extends Model
         'isEmailed',
 
         //total harga
-        'total_harga'
+        'total_harga',
+
+        //produk_id
+        'produk_id'
     ];
 
     public function User()
     {
     	return $this->belongsTo('App\User');
-    }
-
-    public function OrderProduk()
-    {
-        return $this->hasMany('App\Model\OrderProduk');
     }
 }

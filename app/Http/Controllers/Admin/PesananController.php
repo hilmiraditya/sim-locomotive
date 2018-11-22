@@ -7,9 +7,11 @@ use DB;
 use Validator;
 use Mail;
 use Carbon\Carbon;
+
 use App\Model\Pesanan;
 use App\Model\Produk;
-use App\Model\OrderProduk;
+use App\Model\OrderProduk as OrderProduk;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PesananRequest;
@@ -20,7 +22,7 @@ class PesananController extends Controller
     {
         date_default_timezone_set('Asia/Bangkok');
     }
-    private function input_request($pesanan, $request)
+    private function input_request($pesanan, $request, $pesanan_id)
     {
             //biodata
             $pesanan->nama_klien = $request->get('nama_klien');
@@ -48,9 +50,34 @@ class PesananController extends Controller
             //nama penginput
             $pesanan->user_id = Auth::id();
             $pesanan->nama_penginput = Auth::user()->name;
-            $pesanan->save(); 
+
+            //pesanan id
+            $pesanan->pesanan_id = $pesanan_id;
+            $pesanan->save();
     }
-    
+    public function order_produk_input($request_pesananproduk, $pesanan_id)
+    {
+            $pesananproduk = explode("-",$request_pesananproduk);
+            $produk = Produk::all();
+
+            foreach($produk as $produk)
+            {
+                for($a=0;$a<sizeof($pesananproduk);$a++)
+                {
+                    if($pesananproduk[$a] == $produk->id)
+                    {
+                        $order = New OrderProduk;
+                        $order->nama_produk = $produk->nama_produk;
+                        $order->harga_produk = $produk->harga_produk;
+                        $order->kuantitas_produk = $produk->kuantitas_produk;
+                        $order->deskripsi_produk = $produk->deskripsi_produk;
+                        $order->produk_id = $produk->id;
+                        $order->pesanan_id = $pesanan_id;
+                        $order->save();
+                    }
+                }
+            }
+    }
     public function index()
     {
         $view = [
@@ -70,7 +97,9 @@ class PesananController extends Controller
     public function get_tambahpesanan_biodata(PesananRequest $request)
     {
         $validated = $request->validated();
-        $this->input_request(New Pesanan,$request);
+        $pesanan_id = rand(1,10000);
+        $this->input_request(New Pesanan, $request, $pesanan_id);
+        $this->order_produk_input($request->get('pilihanpesananproduk'), $pesanan_id);
     	return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil ditambah');
     }
     public function detil_pesanan($id)
@@ -108,9 +137,8 @@ class PesananController extends Controller
     }
     public function percobaan(Request $request)
     {
-        return 'masuk pak eko';
+        return 'masuk';
     }
-    
     public function hapus_pesanan($id)
     {
         Pesanan::find($id)->delete();
@@ -121,7 +149,8 @@ class PesananController extends Controller
         $pesanan = Pesanan::find($id)->first(); 
         $data = array(
             'pesanan'=> Pesanan::find($id)->first(),
-            'waktu' =>  Carbon::now()
+            'waktu' =>  Carbon::now(),
+            'orderproduk' => OrderProduk::where('pesanan_id', $pesanan->pesanan_id)->get()
         );
         Mail::send('admin.pesanan.email.email', $data, function($message) {
             $message->to('raditya113@gmail.com', 'Locomotive Wedding')->subject('Surat Persetujuan Produksi');
@@ -130,5 +159,11 @@ class PesananController extends Controller
         $pesanan->isEmailed = 1;
         $pesanan->save();
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', "Invoice pesanan atas nama ".$data['pesanan']->nama_klien." berhasil dikirim ke ".$data['pesanan']->email_klien);
+    }
+    public function ubah_status_pemesanan($id)
+    {
+        $pesanan = Pesanan::find($id)->first();
+        // status pesanan : 0 = dibatalkan, 1 = sedang berjalan, 2 = sudah selesai
+        return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Status pesanan atas nama '.$pesanan->nama_penginput.' berhasil diubah');   
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderProduk extends Model
 {
-    protected $table = 'Produk';
+    protected $table = 'OrderProduk';
 
     protected $fillable = [
     	'nama_produk', 'harga_produk', 'kuantitas_produk', 'deskripsi_produk',
@@ -16,10 +16,5 @@ class OrderProduk extends Model
     public function Produk()
     {
     	return $this->belongsTo('App\Model\Produk');
-    }
-
-    public function Pesanan()
-    {
-    	return $this->belongsTo('App\Model\Pesanan');
     }
 }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,6 +40,7 @@
           </div>
           @endif
           <form method="post" action="{{url('Admin/Pesanan/TambahPesanan')}}">
+          <input class="form-control" type="text" id="pilihpesananproduk" name="pilihanpesananproduk" value="">
           @csrf
             <div id="wizard1">
               <h3>Biodata</h3>
@@ -141,19 +141,24 @@
       });
     </script>
     <script>
-      function tambahdata(harga, id)
-      {
-        var awal, hasil;
-        var temp_pesanan = document.getElementById("pilihpesananproduk").value;
+      function remove(array, element){
+        return array.filter(e => e !== element);
+      }
+      function tambahdata(harga, id){
+        var awal, hasil, produk, temp_produk;
+        temp_produk = document.getElementById("pilihpesananproduk").value;
         awal = parseInt(document.getElementById("hpp_value").value);
         if (document.getElementById("confirm".concat(id)).checked == true){
-          //document.getElementById("pilihpesananproduk").value =  $id + '-';
           hasil = awal + harga;
+          document.getElementById("pilihpesananproduk").value =  temp_produk + (id + '-');
         }
         else{
-          var hasil = temp_pesanan.split('-');
-          //tambahin bro
           hasil = awal - harga;
+          produk = temp_produk.split('-');
+          for(i=0;i<produk.length;i++){
+            if(produk[i] == id) produk.splice(i,1);
+          }
+          document.getElementById("pilihpesananproduk").value = produk.join('-');
         }
         //value
         document.getElementById("hpp_value").value = hasil;
@@ -179,6 +184,6 @@
         return "Rp. "+rupiah+",-";
       }
     </script>
-    <input type="hidden" id="pilihpesananproduk" name="pilihpesananproduk" value="">
+    <!--<input type="text" id="pilihpesananproduk" name="pilihpesananproduk" value="">-->
   </body>
 </html>

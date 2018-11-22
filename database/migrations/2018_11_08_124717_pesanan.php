@@ -55,6 +55,9 @@ class Pesanan extends Migration
 
             //total harga
             $table->integer('total_harga');
+
+            //produk_id
+            $table->integer('pesanan_id');
             
             $table->timestamps();
         });

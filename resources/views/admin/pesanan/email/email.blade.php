@@ -173,48 +173,17 @@
                     <td><strong>Deskripsi</strong></td>
                     <td><strong>Quantity</strong></td>
                   </tr>
-                                  <tr>
-                    <td><center>1</center></td>
-                    <td>Wed_Prewedding Foto Outdoor_Reg</td>
-                    <td>Pro Photographer Team
-1 Day Production (max 8Hour)
-1 Spot (Outdoor Area)
-Unlimited Photoshoot
-
-50pcs Edited Photo
-Print 20r (60cm x 40xm) + Frame 2pcs
-
-Softfile in Flashdisk
-</td>
-                    <td>1</td>
+                  <?php $a=1; ?>
+                  @foreach($orderproduk as $orderproduk)
+                  <tr>
+                    <td>{{ $a }}</td>
+                    <td>{{ $orderproduk->nama_produk }}</td>
+                    <td>{{ $orderproduk->deskripsi_produk }}</td>
+                    <td>{{ $orderproduk->kuantitas_produk }}</td>
                   </tr>
-                                  <tr>
-                    <td><center>2</center></td>
-                    <td>Wed_Full Event (Foto+Cinematic)_Reg</td>
-                    <td>Pro Photographer Team
-Coverage for Akad/Pemberkatan + Resepsi (in 1/2day continuity)
-Unlimited Photoshoot
-
-100 Edited Photo
-Wedding Book (Magazine) max 50page
-
-Softfile in Flashdisk
-
----
-
-Pro Videographer Team
-Coverage for Akad/Pemberkatan + Resepsi (in 1/2day continuity)
-Unlimited Photoshoot
-
-1080pHD Video Result
--Full Version (5min) 
--Cutdown Version (1min)
-
-Softfile in Flashdisk
-</td>
-                    <td>1</td>
-                  </tr>
-                                </tbody>
+                  <?php $a++; ?>
+                  @endforeach
+                </tbody>
               </table>
             </td>
           </tr>
@@ -302,7 +271,7 @@ Softfile in Flashdisk
               <table width="800" border="0" cellpadding="5" cellspacing="0" style="border:1px solid black;border-collapse:collapse">
                 <tbody>
                   <tr>
-                    <td><strong>{{ "Rp ".number_format($pesanan->harga_produk,0,',','.').",-" }}</strong></td>
+                    <td><strong>{{ "Rp ".number_format($pesanan->total_harga,0,',','.').",-" }}</strong></td>
                   </tr>
                 </tbody>
               </table>
