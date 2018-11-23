@@ -3,7 +3,7 @@
             <div class="row mg-b-25">
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Unit Produksi :</label>
+                  <label class="form-control-label">Produksi : <span class="tx-danger">*</span></label>
                   <select class="form-control" type="text" name="unit_produksi">
                     <option>Pilih Unit...</option>
                     <option value="Locomotive Production">Locomotive Production</option>

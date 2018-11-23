@@ -115,31 +115,20 @@ class PesananController extends Controller
     }
     public function ubah_pesanan($id)
     {
+        $pesanan = Pesanan::find($id)->first();
         $view = [
             'pesanan' => Pesanan::find($id)->first(),
             'user'=> Auth::user(),
-            'produk' => Produk::all()
+            'produk' => Produk::all(),
+            'orderproduk' => OrderProduk::where('pesanan_id', $pesanan->pesanan_id)->get()
         ];
         return view('admin.pesanan.ubahpesanan.ubahpesanan')->with(compact('view'));
     }
-    public function ubahpesanan($id)
-    {
-        $view = [
-            'pesanan' => Pesanan::find($id)->first(),
-            'user'=> Auth::user(),
-            'produk' => Produk::all()
-        ];
-        return view('admin.pesanan.ubahpesanan.ubahpesanan')->with(compact('view'));
-    }
-    public function get_ubah_pesanan(PesananRequest $request, $id)
+    public function get_ubah_pesanan(PesananRequest $request,$id)
     {
         $validated = $request->validated();
-        $this->input_request(Pesanan::find($id),$request);
+        $this->input_request(Pesanan::find($id),$request, Pesanan::find($id)->first()->pesanan_id);
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil diupdate');
-    }
-    public function percobaan(Request $request)
-    {
-        return 'masuk';
     }
     public function hapus_pesanan($id)
     {

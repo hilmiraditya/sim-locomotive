@@ -3,14 +3,18 @@
             <div class="row mg-b-25">
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Unit Produksi :</label>
-                  <input class="form-control" type="text" id="unit_produksi" value="{{$view['pesanan']->unit_produksi}}">
+                  <label class="form-control-label">Unit Produksi : <span class="tx-danger">*</span></label>
+                  <select class="form-control" type="text" name="unit_produksi">
+                    <option value="Locomotive Production">Locomotive Production</option>
+                    <option value="Locomotive Wedding">Locomotive Wedding</option>
+                  </select>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Produksi : <span class="tx-danger">*</span></label>
-                  <textarea class="form-control" type="text" name="deskripsi_agenda_produksi">{{$view['pesanan']->deskripsi_agenda_produksi}}
+                  <label class="form-control-label">Agenda Produksi : <span class="tx-danger">*</span></label><br>
+                  <textarea class="form-control" type="text" name="deskripsi_agenda_produksi">
+                  {{$view['pesanan']->deskripsi_agenda_produksi}}
                   </textarea>
                 </div>
               </div><!-- col-4 -->
@@ -56,5 +60,5 @@
             </div><!-- row -->
           </div><!-- form-layout -->
           <div align="center">
-            <a href="{{ url('Admin/Pesanan/UbahPesanan/'.$view['pesanan']->id) }}" class="btn btn-primary">Ubah Pesanan</a>
+            <button type="submit" class="btn btn-primary">Ubah Pesanan</button>
           </div>

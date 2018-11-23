@@ -204,10 +204,5 @@
         return "Rp. "+rupiah+",-";
       }
     </script>
-    <div>
-      @foreach($view['produk'] as $produk)
-        <input type="hidden" name="pemesananproduk{{$produk->id}}" value="0">
-      @endforeach
-    </div>
   </body>
 </html>

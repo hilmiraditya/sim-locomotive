@@ -43,10 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('TambahPesanan', 'Admin\PesananController@tambahpesanan_biodata');
       Route::post('TambahPesanan', 'Admin\PesananController@get_tambahpesanan_biodata');
       Route::get('LihatPesanan/{id}', 'Admin\PesananController@detil_pesanan');
-      Route::get('UbahPesanan/{id}', 'Admin\PesananController@ubahpesanan');
-      Route::post('UbahStatusPesanan/{id}', 'Admin\PesananController@ubah_status_pesanan');
+      Route::get('UbahPesanan/{id}', 'Admin\PesananController@ubah_pesanan');
       Route::post('UbahPesanan/{id}', 'Admin\PesananController@get_ubah_pesanan');
-      Route::post('Percobaan', 'Admin\PesananController@percobaan');
+      Route::post('UbahStatusPesanan/{id}', 'Admin\PesananController@ubah_status_pesanan');
       Route::get('HapusPesanan/{id}', 'Admin\PesananController@hapus_pesanan');
       Route::get('KirimEmail/{id}', 'Admin\PesananController@kirim_email_pesanan');
     });
