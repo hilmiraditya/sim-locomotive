@@ -137,14 +137,16 @@ class PesananController extends Controller
     }
     public function kirim_email_pesanan($id)
     {
-        $pesanan = Pesanan::find($id)->first(); 
+        $pesanan = Pesanan::where('id', $id)->first(); 
         $data = array(
-            'pesanan'=> Pesanan::find($id)->first(),
+            'pesanan'=> $pesanan,
             'waktu' =>  Carbon::now(),
             'orderproduk' => OrderProduk::where('pesanan_id', $pesanan->pesanan_id)->get()
         );
-        Mail::send('admin.pesanan.email.email', $data, function($message) {
-            $message->to('raditya113@gmail.com', 'Locomotive Wedding')->subject('Surat Persetujuan Produksi');
+        Mail::send('admin.pesanan.email.email', compact('data'),function ($message)use($data)
+        {
+            $message->to($pesanan->email_klien, $pesanan->nama_klien);
+            $message->subject('Surat Persetujuan Produksi');
             $message->from('locomotivewedding@gmail.com', 'Locomotive Wedding');
         });
         $pesanan->isEmailed = 1;
