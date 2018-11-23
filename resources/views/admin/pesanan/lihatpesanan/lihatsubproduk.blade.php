@@ -21,9 +21,9 @@
               		<td>{{ "Rp ".number_format($produk->harga_produk,0,',','.').",-" }}</td>
               		<td>{{ $produk->kuantitas_produk }}</td>
               		<td>{{ $produk->deskripsi_produk }}</td>
-              		<td>
-                    <input type="checkbox" name="vehicle" id="confirm{{$produk->id}}"
-                    onclick="tambahdata({{$produk->harga_produk}},{{$produk->id}})" value="{{$produk->id}}">
+              		<td id="produkchecked">
+                    <input type="checkbox" name="{{$produk->id}}" id="confirm{{$produk->id}}"
+                    onclick="tambahdata({{$produk->harga_produk}},{{$produk->id}})" value="{{$produk->id}}" disabled>
               		</td>
                   <?php $a++; ?>
                   @endforeach

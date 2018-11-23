@@ -104,10 +104,12 @@ class PesananController extends Controller
     }
     public function detil_pesanan($id)
     {
+        $pesanan = Pesanan::find($id)->first();
         $view = [
             'pesanan' => Pesanan::find($id)->first(),
             'user'=> Auth::user(),
-            'produk' => Produk::all()
+            'produk' => Produk::all(),
+            'orderproduk' => OrderProduk::where('pesanan_id', $pesanan->pesanan_id)->get()
         ];
         return view('admin.pesanan.lihatpesanan.lihat')->with(compact('view'));
     }
