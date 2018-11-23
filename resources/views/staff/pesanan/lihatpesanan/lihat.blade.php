@@ -20,7 +20,7 @@
 
   <body>
     <!-- ########## START: LEFT PANEL ########## -->
-    @include('admin.bar')
+    @include('staff.bar')
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
@@ -45,16 +45,16 @@
             <div id="wizard1">
               <h3>Biodata dan Progress</h3>
               <section>
-                @include('admin.pesanan.lihatpesanan.lihatsubprogress')
-                @include('admin.pesanan.lihatpesanan.lihatsubbiodata')
+                @include('staff.pesanan.lihatpesanan.lihatsubprogress')
+                @include('staff.pesanan.lihatpesanan.lihatsubbiodata')
               </section>
               <h3>Pemesanan Produk</h3>
               <section>
-                @include('admin.pesanan.lihatpesanan.lihatsubproduk')
+                @include('staff.pesanan.lihatpesanan.lihatsubproduk')
               </section>
               <h3>Produksi</h3>
               <section>
-                @include('admin.pesanan.lihatpesanan.lihatsubproduksi')
+                @include('staff.pesanan.lihatpesanan.lihatsubproduksi')
               </section>
             </div>
         </div><!-- card -->
@@ -71,7 +71,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form method="post" action="{{ url('Admin/Pesanan/UbahStatusPesanan/'.$view['pesanan']->id) }}">
+          <form method="post" action="{{ url('Staff/Pesanan/UbahStatusPesanan/'.$view['pesanan']->id) }}">
           @csrf
           <div class="modal-body">
             <div class="form-group">

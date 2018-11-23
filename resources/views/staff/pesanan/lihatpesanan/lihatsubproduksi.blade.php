@@ -56,5 +56,5 @@
             </div><!-- row -->
           </div><!-- form-layout -->
           <div align="center">
-            <a href="{{ url('Admin/Pesanan/UbahPesanan/'.$view['pesanan']->id) }}" class="btn btn-primary">Ubah Pesanan</a>
+            <a href="{{ url('Staff/Pesanan/UbahPesanan/'.$view['pesanan']->id) }}" class="btn btn-primary">Ubah Pesanan</a>
           </div>

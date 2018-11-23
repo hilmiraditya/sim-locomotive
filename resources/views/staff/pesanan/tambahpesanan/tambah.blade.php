@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    @include('admin.bar')
+    @include('staff.bar')
     <div class="sl-mainpanel">
       <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item" href="index.html">Sistem Information Management</a>
@@ -39,21 +39,21 @@
               </ul>
           </div>
           @endif
-          <form method="post" action="{{url('Admin/Pesanan/TambahPesanan')}}">
+          <form method="post" action="{{url('Staff/Pesanan/TambahPesanan')}}">
           <input class="form-control" type="hidden" id="pilihpesananproduk" name="pilihanpesananproduk" value="">
           @csrf
             <div id="wizard1">
               <h3>Biodata</h3>
               <section>
-                @include('admin.pesanan.tambahpesanan.subbiodata')
+                @include('staff.pesanan.tambahpesanan.subbiodata')
               </section>
               <h3>Pemesanan Produk</h3>
               <section>
-                @include('admin.pesanan.tambahpesanan.subproduk')
+                @include('staff.pesanan.tambahpesanan.subproduk')
               </section>
               <h3>Produksi</h3>
               <section>
-                @include('admin.pesanan.tambahpesanan.subproduksi')
+                @include('staff.pesanan.tambahpesanan.subproduksi')
               </section>
             </div>
           </form>

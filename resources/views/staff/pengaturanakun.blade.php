@@ -33,14 +33,6 @@
                   <input class="form-control" type="password" name="password" placeholder="(kosongkan jika password tidak ingin diubah)">
                 </div>
               </div><!-- col-8 -->
-              <div class="col-lg-4">
-                <div class="form-group mg-b-10-force">
-                  <label class="form-control-label">Hak Akses: <span class="tx-danger">*</span></label>
-                  <select name="role" class="form-control select2" disabled>
-                    <option value="Admin">Admin</option>
-                  </select>
-                </div>
-              </div><!-- col-4 -->
             </div><!-- row -->
             <div class="form-layout-footer">
               <button class="btn btn-info mg-r-5" type="submit">Ubah Akun</button>
