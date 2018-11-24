@@ -12,6 +12,7 @@ use App\Model\Pesanan;
 use App\Model\Produk;
 use App\Model\OrderProduk as OrderProduk;
 
+use Spatie\GoogleCalendar\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PesananRequest;
@@ -24,59 +25,66 @@ class PesananController extends Controller
     }
     private function input_request($pesanan, $request, $pesanan_id)
     {
-            //biodata
-            $pesanan->nama_klien = $request->get('nama_klien');
-            $pesanan->noidentitas_klien = $request->get('noidentitas_klien');
-            $pesanan->alamat_klien = $request->get('alamat_klien');
-            $pesanan->email_klien = $request->get('email_klien');
-            $pesanan->perusahaan_klien = $request->get('perusahaan_klien');
-            $pesanan->jabatan_klien = $request->get('jabatan_klien');
-            $pesanan->notelp_klien = $request->get('notelp_klien');
-            $pesanan->nowhatsapp_klien = $request->get('nowhatsapp_klien');
-            $pesanan->instagram_klien = $request->get('instagram_klien');
-            //agenda produksi
-            $pesanan->deskripsi_agenda_produksi = $request->get('deskripsi_agenda_produksi');
-            //jadwal revisi dan serah terima
-            $pesanan->preview_pertama = $request->get('preview_pertama');
-            $pesanan->jadwal_1 = $request->get('jadwal_1');
-            $pesanan->jadwal_2 = $request->get('jadwal_2');
-            $pesanan->serah_terimah = $request->get('serah_terimah');
-            //catatan lain
-            $pesanan->catatan_lain = $request->get('catatan_lain');
-            //unit produksi
-            $pesanan->unit_produksi = $request->get('unit_produksi');
-            //total harga
-            $pesanan->total_harga = $request->get('total_harga');
-            //nama penginput
-            $pesanan->user_id = Auth::id();
-            $pesanan->nama_penginput = Auth::user()->name;
+        //biodata
+        $pesanan->nama_klien = $request->get('nama_klien');
+        $pesanan->noidentitas_klien = $request->get('noidentitas_klien');
+        $pesanan->alamat_klien = $request->get('alamat_klien');
+        $pesanan->email_klien = $request->get('email_klien');
+        $pesanan->perusahaan_klien = $request->get('perusahaan_klien');
+        $pesanan->jabatan_klien = $request->get('jabatan_klien');
+        $pesanan->notelp_klien = $request->get('notelp_klien');
+        $pesanan->nowhatsapp_klien = $request->get('nowhatsapp_klien');
+        $pesanan->instagram_klien = $request->get('instagram_klien');
+        //agenda produksi
+        $pesanan->deskripsi_agenda_produksi = $request->get('deskripsi_agenda_produksi');
+        //jadwal revisi dan serah terima
+        $pesanan->preview_pertama = $request->get('preview_pertama');
+        $pesanan->jadwal_1 = $request->get('jadwal_1');
+        $pesanan->jadwal_2 = $request->get('jadwal_2');
+        $pesanan->serah_terimah = $request->get('serah_terimah');
+        //catatan lain
+        $pesanan->catatan_lain = $request->get('catatan_lain');
+        //unit produksi
+        $pesanan->unit_produksi = $request->get('unit_produksi');
+        //total harga
+        $pesanan->total_harga = $request->get('total_harga');
+        //nama penginput
+        $pesanan->user_id = Auth::id();
+        $pesanan->nama_penginput = Auth::user()->name;
 
-            //pesanan id
-            $pesanan->pesanan_id = $pesanan_id;
-            $pesanan->save();
+        //pesanan id
+        $pesanan->pesanan_id = $pesanan_id;
+        $pesanan->save();
     }
-    public function order_produk_input($request_pesananproduk, $pesanan_id)
+    private function order_produk_input($request_pesananproduk, $pesanan_id)
     {
-            $pesananproduk = explode("-",$request_pesananproduk);
-            $produk = Produk::all();
-
-            foreach($produk as $produk)
+        $pesananproduk = explode("-",$request_pesananproduk);
+        $produk = Produk::all();
+        foreach($produk as $produk)
+        {
+            for($a=0;$a<sizeof($pesananproduk);$a++)
             {
-                for($a=0;$a<sizeof($pesananproduk);$a++)
+                if($pesananproduk[$a] == $produk->id)
                 {
-                    if($pesananproduk[$a] == $produk->id)
-                    {
-                        $order = New OrderProduk;
-                        $order->nama_produk = $produk->nama_produk;
-                        $order->harga_produk = $produk->harga_produk;
-                        $order->kuantitas_produk = $produk->kuantitas_produk;
-                        $order->deskripsi_produk = $produk->deskripsi_produk;
-                        $order->produk_id = $produk->id;
-                        $order->pesanan_id = $pesanan_id;
-                        $order->save();
-                    }
+                    $order = New OrderProduk;
+                    $order->nama_produk = $produk->nama_produk;
+                    $order->harga_produk = $produk->harga_produk;
+                    $order->kuantitas_produk = $produk->kuantitas_produk;
+                    $order->deskripsi_produk = $produk->deskripsi_produk;
+                    $order->produk_id = $produk->id;
+                    $order->pesanan_id = $pesanan_id;
+                    $order->save();
                 }
             }
+        }
+    }
+    private function google_calendar_input($date, $event_name)
+    {
+        $event = new Event;
+        $event->name = $event_name;
+        $event->startDateTime = $date;
+        $event->endDateTime = $date;
+        $event->save();
     }
     public function index()
     {
@@ -100,6 +108,10 @@ class PesananController extends Controller
         $pesanan_id = rand(1,10000);
         $this->input_request(New Pesanan, $request, $pesanan_id);
         $this->order_produk_input($request->get('pilihanpesananproduk'), $pesanan_id);
+        $this->google_calendar_input($request->get('preview_pertama'), 'Klien : '.$request->get('nama_klien').'| Preview Pertama');
+        $this->google_calendar_input($request->get('jadwal_1'), 'Klien : '.$request->get('nama_klien').'| Revisi 1');
+        $this->google_calendar_input($request->get('jadwal_2'), 'Klien : '.$request->get('nama_klien').'| Revisi 2');
+        $this->google_calendar_input($request->get('serah_terimah'), 'Klien : '.$request->get('nama_klien').'| Serah Terima Pesanan');
     	return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil ditambah');
     }
     public function detil_pesanan($id)
