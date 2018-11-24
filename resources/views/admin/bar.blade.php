@@ -8,6 +8,12 @@
             <span class="menu-item-label">Dashboard</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
+        <a href="{{'/Admin/KalenderTimeline'}}" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-calendar tx-22"></i>
+            <span class="menu-item-label">Kalender</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
         <a href="{{'/Admin/Akun/LihatAkun'}}" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-person-stalker tx-22"></i>

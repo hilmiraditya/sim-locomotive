@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('HapusPesanan/{id}', 'Admin\PesananController@hapus_pesanan');
       Route::get('KirimEmail/{id}', 'Admin\PesananController@kirim_email_pesanan');
     });
+    Route::get('KalenderTimeline', 'Admin\KalendarController@index');    
     Route::get('PengaturanAkun', 'Admin\PengaturanAkunController@update');
     Route::post('PengaturanAkun', 'Admin\PengaturanAkunController@updatedata');
 	});

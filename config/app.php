@@ -175,6 +175,7 @@ return [
         //Evercode1\TraitMaker\TraitMakerServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Matriphe\Manekin\ManekinServiceProvider::class,
+        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
     ],
 
     /*
@@ -224,6 +225,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\DomPDF\Facades::class,
+        'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
     ],
 
 ];

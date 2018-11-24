@@ -12,6 +12,7 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "matriphe/manekin": "^1.0",
+        "spatie/laravel-google-calendar": "^2.2",
         "spatie/laravel-permission": "^2.23"
     },
     "require-dev": {
