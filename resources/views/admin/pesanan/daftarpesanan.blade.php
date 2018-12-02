@@ -68,9 +68,9 @@
                   </td>
               		<td>{{ $pesanan->User->name }}</td>
               		<td style="color: white;">
-              			<a href="{{url('Admin/Pesanan/LihatPesanan/'.$pesanan->id)}}" class="btn btn-sm btn-primary">Detil</a>
+              			<a href="{{ url('Admin/Pesanan/LihatPesanan/'.$pesanan->id) }}" class="btn btn-sm btn-primary">Detil</a>
                     <a href="{{ url('Admin/Pesanan/KirimEmail/'.$pesanan->id) }}" class="btn btn-sm btn-success">Email</a>
-                    <a href="{{url('Admin/Pesanan/HapusPesanan/'.$pesanan->id)}}" class="btn btn-sm btn-danger">Hapus</a>
+                    <a href="{{ url('Admin/Pesanan/HapusPesanan/'.$pesanan->id) }}" class="btn btn-sm btn-danger">Hapus</a>
               		</td>
                   <?php $a++; ?>
                   @endforeach

@@ -24,6 +24,8 @@ class PesananController extends Controller
     }
     private function input_request($pesanan, $request, $pesanan_id)
     {
+        DB::BeginTransaction();
+        try {
             //biodata
             $pesanan->nama_klien = $request->get('nama_klien');
             $pesanan->noidentitas_klien = $request->get('noidentitas_klien');
@@ -33,9 +35,9 @@ class PesananController extends Controller
             $pesanan->jabatan_klien = $request->get('jabatan_klien');
             $pesanan->notelp_klien = $request->get('notelp_klien');
             $pesanan->nowhatsapp_klien = $request->get('nowhatsapp_klien');
-            $pesanan->instagram_klien = $request->get('instagram_klien');
+            $pesanan->instagram_klien = $request->get('instagram_klien');        
             //agenda produksi
-            $pesanan->deskripsi_agenda_produksi = $request->get('deskripsi_agenda_produksi');
+            $pesanan->deskripsi_agenda_produksi = $request->get('deskripsi_agenda_produksi');        
             //jadwal revisi dan serah terima
             $pesanan->preview_pertama = $request->get('preview_pertama');
             $pesanan->jadwal_1 = $request->get('jadwal_1');
@@ -50,10 +52,13 @@ class PesananController extends Controller
             //nama penginput
             $pesanan->user_id = Auth::id();
             $pesanan->nama_penginput = Auth::user()->name;
-
             //pesanan id
             $pesanan->pesanan_id = $pesanan_id;
             $pesanan->save();
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+        }   
     }
     public function order_produk_input($request_pesananproduk, $pesanan_id)
     {
@@ -104,30 +109,28 @@ class PesananController extends Controller
     }
     public function detil_pesanan($id)
     {
-        $pesanan = Pesanan::find($id)->first();
         $view = [
-            'pesanan' => Pesanan::find($id)->first(),
+            'pesanan' => Pesanan::where('id', $id)->first(),
             'user'=> Auth::user(),
             'produk' => Produk::all(),
-            'orderproduk' => OrderProduk::where('pesanan_id', $pesanan->pesanan_id)->get()
+            'orderproduk' => OrderProduk::where('pesanan_id', Pesanan::where('id', $id)->first()->pesanan_id)->get()
         ];
         return view('admin.pesanan.lihatpesanan.lihat')->with(compact('view'));
     }
     public function ubah_pesanan($id)
     {
-        $pesanan = Pesanan::find($id)->first();
         $view = [
-            'pesanan' => Pesanan::find($id)->first(),
+            'pesanan' => Pesanan::where('id', $id)->first(),
             'user'=> Auth::user(),
             'produk' => Produk::all(),
-            'orderproduk' => OrderProduk::where('pesanan_id', $pesanan->pesanan_id)->get()
+            'orderproduk' => OrderProduk::where('pesanan_id', Pesanan::where('id', $id)->first()->pesanan_id)->get()
         ];
         return view('admin.pesanan.ubahpesanan.ubahpesanan')->with(compact('view'));
     }
     public function get_ubah_pesanan(PesananRequest $request,$id)
     {
         $validated = $request->validated();
-        $this->input_request(Pesanan::find($id),$request, Pesanan::find($id)->first()->pesanan_id);
+        $this->input_request(Pesanan::find($id),$request, Pesanan::where('id', $id)->first()->pesanan_id);
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil diupdate');
     }
     public function hapus_pesanan($id)
@@ -155,7 +158,7 @@ class PesananController extends Controller
     }
     public function ubah_status_pesanan(Request $request, $id)
     {
-        $pesanan = Pesanan::find($id)->first();
+        $pesanan = Pesanan::where('id', $id)->first();
         // status pesanan : 0 = dibatalkan, 1 = sedang berjalan, 2 = sudah selesai
         $pesanan->status_pesanan = $request->get('status_pesanan');
         $pesanan->save();
