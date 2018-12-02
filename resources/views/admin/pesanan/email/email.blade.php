@@ -25,9 +25,9 @@
           </tr>
           <tr>
             <td>
-              Tanggal buat : {{$pesanan->created_at}}  </td>
+              Tanggal buat : {{$data['pesanan']->created_at}}  </td>
             <td align="right">
-              Tanggal cetak : {{$waktu}}</td>
+              Tanggal cetak : {{$data['waktu']}}</td>
           </tr>
         </tbody>
       </table>
@@ -44,7 +44,7 @@
           </tr>
           <tr>
             <td width="100"><strong>Unit Produksi</strong></td>
-            <td>{{$pesanan->unit_produksi}}</td>
+            <td>{{$data['pesanan']->unit_produksi}}</td>
           </tr>
           <tr>
             <td colspan="2" style="padding-top:8px">Saya yang bertanda tangan dibawah ini:</td>
@@ -109,39 +109,39 @@
           </tr> -->
           <tr>
             <td width="150" style="font-weight: bold;">Nama</td>
-            <td>{{$pesanan->nama_klien}}</td>
+            <td>{{$data['pesanan']->nama_klien}}</td>
           </tr>
           <tr>
             <td width="150" style="font-weight: bold;">No. KTP</td>
-            <td>{{$pesanan->noidentitas_klien}}</td>
+            <td>{{$data['pesanan']->noidentitas_klien}}</td>
           </tr>
           <tr>
             <td width="150" style="font-weight: bold;">Alamat</td>
-            <td>{{$pesanan->alamat_klien}}</td>
+            <td>{{$data['pesanan']->alamat_klien}}</td>
           </tr>
           <tr>
             <td width="150" style="font-weight: bold;">Perusahaan</td>
-            <td>{{$pesanan->perusahaan_klien}}</td>
+            <td>{{$data['pesanan']->perusahaan_klien}}</td>
           </tr>
           <tr>
             <td width="150" style="font-weight: bold;">Jabatan</td>
-            <td>{{$pesanan->jabatan_klien}}</td>
+            <td>{{$data['pesanan']->jabatan_klien}}</td>
           </tr>
           <tr>
             <td width="150" style="font-weight: bold;">Email</td>
-            <td>{{$pesanan->email_klien}}</td>
+            <td>{{$data['pesanan']->email_klien}}</td>
           </tr>
           <tr>
             <td width="150" style="font-weight: bold;">No. Telepon</td>
-            <td>{{$pesanan->notelp_klien}}</td>
+            <td>{{$data['pesanan']->notelp_klien}}</td>
           </tr>
           <tr>
             <td width="150" style="font-weight: bold;">No. WhatsApp</td>
-            <td>{{$pesanan->nowhatsapp_klien}}</td>
+            <td>{{$data['pesanan']->nowhatsapp_klien}}</td>
           </tr>
           <tr>
             <td width="150" style="font-weight: bold;">Akun Instagram</td>
-            <td>http://www.instagram.com/{{$pesanan->instagram_klien}}</td>
+            <td>http://www.instagram.com/{{$data['pesanan']->instagram_klien}}</td>
           </tr>
         </tbody>
       </table>
@@ -174,7 +174,7 @@
                     <td><strong>Quantity</strong></td>
                   </tr>
                   <?php $a=1; ?>
-                  @foreach($orderproduk as $orderproduk)
+                  @foreach($data['orderproduk'] as $orderproduk)
                   <tr>
                     <td>{{ $a }}</td>
                     <td>{{ $orderproduk->nama_produk }}</td>
@@ -208,7 +208,7 @@
                 <tbody>
                   <tr>
                     <td>
-                    	{{$pesanan->deskripsi_agenda_produksi}}
+                    	{{$data['pesanan']->deskripsi_agenda_produksi}}
                     </td>
                   </tr>
                 </tbody>
@@ -233,19 +233,19 @@
                 <tbody>
                   <tr>
                     <td><strong>Preview Pertama</strong></td>
-                    <td>Tanggal <strong>{{$pesanan->preview_pertama}}</strong></td>
+                    <td>Tanggal <strong>{{$data['pesanan']->preview_pertama}}</strong></td>
                   </tr>
                   <tr>
                     <td><strong>Revisi Pertama</strong></td>
-                    <td>Tanggal <strong>{{$pesanan->jadwal_1}}</strong></td>
+                    <td>Tanggal <strong>{{$data['pesanan']->jadwal_1}}</strong></td>
                   </tr>
                   <tr>
                     <td><strong>Revisi Kedua</strong></td>
-                    <td>Tanggal <strong>{{$pesanan->jadwal_2}}</strong></td>
+                    <td>Tanggal <strong>{{$data['pesanan']->jadwal_2}}</strong></td>
                   </tr>
                   <tr>
                     <td><strong>Serah Terima</strong></td>
-                    <td>Tanggal <strong>{{$pesanan->serah_terimah}}</strong></td>
+                    <td>Tanggal <strong>{{$data['pesanan']->serah_terimah}}</strong></td>
                   </tr>
                 </tbody>
               </table>
@@ -271,7 +271,7 @@
               <table width="800" border="0" cellpadding="5" cellspacing="0" style="border:1px solid black;border-collapse:collapse">
                 <tbody>
                   <tr>
-                    <td><strong>{{ "Rp ".number_format($pesanan->total_harga,0,',','.').",-" }}</strong></td>
+                    <td><strong>{{ "Rp ".number_format($data['pesanan']->total_harga,0,',','.').",-" }}</strong></td>
                   </tr>
                 </tbody>
               </table>
@@ -329,8 +329,8 @@
                 <tbody>
                   <tr>
                     <td>
-                    	@if($pesanan->catatan_lain == NULL) Tidak ada catatan lain
-                    	@else {{$pesanan->catatan_lain}}
+                    	@if($data['pesanan']->catatan_lain == NULL) Tidak ada catatan lain
+                    	@else {{$data['pesanan']->catatan_lain}}
                     	@endif
 					</td>
                   </tr>
@@ -397,7 +397,7 @@
               Sales Processed by Bramantyo DW, Marketing Manager, Locomotive Wedding, 0822 3459 9520<br>Approved by Director            </td>
           </tr>
           <tr>
-            <td>Malang, {{$waktu}}</td>
+            <td>Malang, {{$data['waktu']}}</td>
           </tr>
           <tr>
             <td style="border-bottom: 1px solid #000;">&nbsp;</td>

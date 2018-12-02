@@ -57,26 +57,26 @@ class PesananController extends Controller
     }
     public function order_produk_input($request_pesananproduk, $pesanan_id)
     {
-            $pesananproduk = explode("-",$request_pesananproduk);
-            $produk = Produk::all();
+        $pesananproduk = explode("-",$request_pesananproduk);
+        $produk = Produk::all();
 
-            foreach($produk as $produk)
+        foreach($produk as $produk)
+        {
+            for($a=0;$a<sizeof($pesananproduk);$a++)
             {
-                for($a=0;$a<sizeof($pesananproduk);$a++)
+                if($pesananproduk[$a] == $produk->id)
                 {
-                    if($pesananproduk[$a] == $produk->id)
-                    {
-                        $order = New OrderProduk;
-                        $order->nama_produk = $produk->nama_produk;
-                        $order->harga_produk = $produk->harga_produk;
-                        $order->kuantitas_produk = $produk->kuantitas_produk;
-                        $order->deskripsi_produk = $produk->deskripsi_produk;
-                        $order->produk_id = $produk->id;
-                        $order->pesanan_id = $pesanan_id;
-                        $order->save();
-                    }
+                    $order = New OrderProduk;
+                    $order->nama_produk = $produk->nama_produk;
+                    $order->harga_produk = $produk->harga_produk;
+                    $order->kuantitas_produk = $produk->kuantitas_produk;
+                    $order->deskripsi_produk = $produk->deskripsi_produk;
+                    $order->produk_id = $produk->id;
+                    $order->pesanan_id = $pesanan_id;
+                    $order->save();
                 }
             }
+        }
     }
     public function index()
     {
@@ -145,7 +145,7 @@ class PesananController extends Controller
         );
         Mail::send('admin.pesanan.email.email', compact('data'),function ($message)use($data)
         {
-            $message->to($pesanan->email_klien, $pesanan->nama_klien);
+            $message->to($data['pesanan']->email_klien, $data['pesanan']->nama_klien);
             $message->subject('Surat Persetujuan Produksi');
             $message->from('locomotivewedding@gmail.com', 'Locomotive Wedding');
         });
