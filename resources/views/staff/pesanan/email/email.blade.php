@@ -329,7 +329,7 @@
                 <tbody>
                   <tr>
                     <td>
-                    	@if($pesanan->catatan_lain == NULL) Tidak ada catatan lain
+                    	@if($data['pesanan']->catatan_lain == NULL) Tidak ada catatan lain
                     	@else {{$data['pesanan']->catatan_lain}}
                     	@endif
 					</td>
@@ -381,7 +381,7 @@
             <td><br><br><br><br><br><br><br></td>
           </tr>
           <tr>
-            <td><b>{{ $data['pesanan']->nama_klien }}</b></td>
+            <td><b>Rezaldy Alief Pramada</b></td>
           </tr>
           <tr>
             <td>&nbsp;</td>

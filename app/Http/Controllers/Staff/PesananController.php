@@ -143,9 +143,9 @@ class PesananController extends Controller
             'waktu' =>  Carbon::now(),
             'orderproduk' => OrderProduk::where('pesanan_id', $pesanan->pesanan_id)->get()
         );
-        Mail::send('Staff.pesanan.email.email', compact('data', 'pesanan'),function ($message)use($data, $pesanan)
+        Mail::send('admin.pesanan.email.email', compact('data'),function ($message)use($data)
         {
-            $message->to($pesanan->email_klien, $pesanan->nama_klien);
+            $message->to($data['pesanan']->email_klien, $data['pesanan']->nama_klien);
             $message->subject('Surat Persetujuan Produksi');
             $message->from('locomotivewedding@gmail.com', 'Locomotive Wedding');
         });
