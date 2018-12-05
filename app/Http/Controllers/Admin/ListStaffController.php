@@ -84,7 +84,8 @@ class ListStaffController extends Controller
     {
     	$view = [
     		'user' => Auth::user();
-    		'list_pekerjaan' => ListStaff::whereHas('Pekerjaan', function($q) use($id) {$q->whereIn('id', $id);})->delete();
+    		'list_pekerjaan' => ListStaff::where(Auth::id())->whereHas('Pekerjaan', function($q) use($id) {$q->whereIn('id', $id);})->delete();
     	];
+    	return redirect('Admin/ListStaff/DetilPekerjaan', compact('view'))->with('pesan_sukses', 'Pekerjaan pada tanggal '$ListStaff::where(Auth::id()->)' untuk client '.$ListStaff::where(Auth::id()->nama).);
     }
 }
