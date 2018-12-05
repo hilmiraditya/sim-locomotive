@@ -15,10 +15,8 @@
 
   <body>
 
-    @include('staff.bar')
-    <!-- ########## START: MAIN PANEL ########## -->$
+    @include('admin.bar')
     @yield('content')
-    <!-- ########## END: MAIN PANEL ########## -->
 
     <script src="{{ url('admin_page/lib/jquery/jquery.js') }}"></script>
     <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>

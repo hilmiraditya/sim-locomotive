@@ -2,25 +2,25 @@
     <div class="sl-sideleft">
       <label class="sidebar-label">Navigasi</label>
       <div class="sl-sideleft-menu">
-        <a href="{{'/Admin/Home'}}" class="sl-menu-link">
+        <a href="{{url('/Admin/Home')}}" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Dashboard</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="{{'/Admin/KalenderTimeline'}}" class="sl-menu-link">
+        <a href="{{url('/Admin/KalenderTimeline')}}" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-calendar tx-22"></i>
             <span class="menu-item-label">Kalender</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="{{'/Admin/Akun/LihatAkun'}}" class="sl-menu-link">
+        <a href="{{url('/Admin/Akun/LihatAkun')}}" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-person-stalker tx-22"></i>
             <span class="menu-item-label">Akun</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="{{'/Admin/Produk/LihatProduk'}}" class="sl-menu-link">
+        <a href="{{url('/Admin/Produk/LihatProduk')}}" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon fa fa-inbox tx-22"></i>
             <span class="menu-item-label">Produk</span>
@@ -34,8 +34,8 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{'/Admin/Pesanan/DaftarPesanan'}}" class="nav-link">Daftar Pesanan</a></li>
-          <li class="nav-item"><a href="{{ '/Admin/Pesanan/TambahPesanan' }}" class="nav-link">Tambah Pesanan</a></li>
+          <li class="nav-item"><a href="{{url('/Admin/Pesanan/DaftarPesanan')}}" class="nav-link">Daftar Pesanan</a></li>
+          <li class="nav-item"><a href="{{ url('/Admin/Pesanan/TambahPesanan')}}" class="nav-link">Tambah Pesanan</a></li>
         </ul>
       </div>
       <br>

@@ -42,8 +42,10 @@
   </head>
 
   <body>
+
     @include('admin.bar')
     @yield('content')
+    
     <script src="{{ url('admin_page/lib/jquery/jquery.js') }}"></script>
     <script src="{{ url('admin_page/lib/bootstrap/bootstrap.js') }}"></script>
     <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>

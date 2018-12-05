@@ -9,7 +9,7 @@ class ListStaff extends Model
     protected $table = 'liststaff';
 
     protected $fillable = [
-        'nama', 'email', 'jabatan', 'unit', 'tanggal', 'alamat', 'instagram', 'no_telefon'
+        'nama', 'email', 'jabatan', 'unit', 'no_telefon'
     ];
 
     public function Pesanan()

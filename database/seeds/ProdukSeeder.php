@@ -17,9 +17,9 @@ class ProdukSeeder extends Seeder
         foreach(range(0,30) as $i){
             DB::table('produk')->insert([
                 'nama_produk' => $faker->name,
-                'harga_produk' => rand(800000,10000000),
+                'harga_produk' => $faker->randomNumber(2),
                 'kuantitas_produk' => rand(1,10),
-                'deskripsi_produk' => 'ini adalah deskripsinya hehehehe'
+                'deskripsi_produk' => 'salah satu produk locomotive'
             ]);
         }
     }

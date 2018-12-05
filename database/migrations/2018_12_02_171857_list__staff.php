@@ -19,7 +19,7 @@ class ListStaff extends Migration
             $table->string('email');
             $table->string('jabatan');
             $table->string('unit');
-            $table->integer('no_telefon');
+            $table->string('no_telefon');
             $table->timestamps();
         });
     }

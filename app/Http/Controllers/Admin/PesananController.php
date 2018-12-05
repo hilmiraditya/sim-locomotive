@@ -64,21 +64,25 @@ class PesananController extends Controller
     {
         $pesananproduk = explode("-",$request_pesananproduk);
         $produk = Produk::all();
-
         foreach($produk as $produk)
         {
             for($a=0;$a<sizeof($pesananproduk);$a++)
             {
                 if($pesananproduk[$a] == $produk->id)
                 {
-                    $order = New OrderProduk;
-                    $order->nama_produk = $produk->nama_produk;
-                    $order->harga_produk = $produk->harga_produk;
-                    $order->kuantitas_produk = $produk->kuantitas_produk;
-                    $order->deskripsi_produk = $produk->deskripsi_produk;
-                    $order->produk_id = $produk->id;
-                    $order->pesanan_id = $pesanan_id;
-                    $order->save();
+                    DB::BeginTransaction();
+                    try {
+                        $order = New OrderProduk;
+                        $order->nama_produk = $produk->nama_produk;
+                        $order->harga_produk = $produk->harga_produk;
+                        $order->kuantitas_produk = $produk->kuantitas_produk;
+                        $order->deskripsi_produk = $produk->deskripsi_produk;
+                        $order->produk_id = $produk->id;
+                        $order->pesanan_id = $pesanan_id;
+                        $order->save();
+                    } catch (Exception $e) {
+                        DB::rollback();
+                    }
                 }
             }
         }
@@ -146,7 +150,7 @@ class PesananController extends Controller
             'waktu' =>  Carbon::now(),
             'orderproduk' => OrderProduk::where('pesanan_id', $pesanan->pesanan_id)->get()
         );
-        Mail::send('admin.pesanan.email.email', compact('data'),function ($message)use($data)
+        Mail::send('admin.pesanan.email.email', compact('data'),function($message)use($data)
         {
             $message->to($data['pesanan']->email_klien, $data['pesanan']->nama_klien);
             $message->subject('Surat Persetujuan Produksi');

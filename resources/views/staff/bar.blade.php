@@ -30,7 +30,7 @@
       <div class="sl-header-right">
         <nav class="nav">
           <div class="dropdown">
-            <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+            <a href="#" class="nav-link nav-link-profile" data-toggle="dropdown">
               <span class="logged-name">{{$view['user']->name}}</span>
               <img src="{{ url('images/people.png') }}" class="wd-32 rounded-circle" alt="">
             </a>

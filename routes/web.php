@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {return view('welcome');});
+Route::get('/', function () {return redirect('/login');});
 Route::get('login', ['as' => 'login','uses' => 'Auth\LoginController@showLoginForm']);
 Route::post('login',['uses' => 'CustomLoginController@login','as' => 'login.custom']);
 Route::post('logout', ['as' => 'logout','uses' => 'Auth\LoginController@logout']);
