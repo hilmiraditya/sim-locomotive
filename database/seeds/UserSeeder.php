@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         $user->save();
     
         $user = New User;
-        $user->id = 1;
+        $user->id = 2;
         $user->name = 'Staff Hilmi';
         $user->email = 'staff@staff.com';
         $user->admin = 1;

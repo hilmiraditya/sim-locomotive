@@ -27,6 +27,7 @@ class Pesanan extends Migration
             $table->string('instagram_klien')->nullable();
             
             //agenda produksi
+            $table->date('agenda_produksi');
             $table->string('deskripsi_agenda_produksi',300);
 
             //jadwal revisi dan serah terima
@@ -55,9 +56,6 @@ class Pesanan extends Migration
 
             //total harga
             $table->integer('total_harga');
-
-            //produk_id
-            $table->integer('pesanan_id');
             
             $table->timestamps();
         });

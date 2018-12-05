@@ -17,4 +17,9 @@ class OrderProduk extends Model
     {
     	return $this->belongsTo('App\Model\Produk');
     }
+
+    public function Pesanan()
+    {
+    	return $this->belongsToMany('App\Model\Pesanan', 'orderproduk_pesanan', 'orderproduk_id', 'pesanan_id');
+    }
 }

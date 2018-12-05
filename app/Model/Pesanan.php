@@ -46,4 +46,14 @@ class Pesanan extends Model
     {
     	return $this->belongsTo('App\User');
     }
+
+    public function OrderProduk()
+    {
+        return $this->belongsToMany('App\Model\OrderProduk', 'orderproduk_pesanan', 'orderproduk_id', 'pesanan_id');
+    }
+
+    public function ListStaff()
+    {
+        return $this->belongsToMany('App\Model\ListStaff', 'liststaff_pesanan', 'liststaff_id', 'pesanan_id');
+    }
 }
