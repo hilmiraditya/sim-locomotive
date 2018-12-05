@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class OrderprodukPesanan extends Migration
+class ProdukPesanan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class OrderprodukPesanan extends Migration
      */
     public function up()
     {
-        Schema::create('orderproduk_pesanan', function (Blueprint $table) {
+        Schema::create('produk_pesanan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('orderproduk_id')->unsigned();
+            $table->integer('produk_id')->unsigned();
             $table->integer('pesanan_id')->unsigned();
         });
     }
@@ -27,6 +27,6 @@ class OrderprodukPesanan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orderproduk_pesanan');
+        Schema::dropIfExists('produk_pesanan');
     }
 }

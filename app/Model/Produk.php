@@ -12,8 +12,8 @@ class Produk extends Model
     	'nama_produk', 'harga_produk', 'kuantitas_produk', 'deskripsi_produk'
     ];
 
-    public function OrderProduk()
+    public function Pesanan()
     {
-    	return $this->hasMany('App\Model\OrderProduk');
+    	return $this->belongsToMany('App\Model\Pesanan', 'produk_pesanan', 'produk_id', 'pesanan_id');
     }
 }

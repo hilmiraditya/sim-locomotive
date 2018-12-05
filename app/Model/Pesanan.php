@@ -11,11 +11,10 @@ class Pesanan extends Model
     protected $fillable = [
     	//biodata klien
     	'nama_klien', 'noidentitas_klien', 'alamat_klien', 'email_klien', 'perusahaan_klien',
-    	'jabatan_klien', 'notelp_klien', 'nowhatsapp_klien', 'instagram_klien', 'facebook_klien', 'twitter_klien',
-    	'fotoidentitas_klien',
+    	'jabatan_klien', 'notelp_klien', 'nowhatsapp_klien', 'instagram_klien',
 
     	//produksi
-    	'tanggal_produksi','deskripsi_agenda_produksi',
+    	'agenda_produksi','deskripsi_agenda_produksi',
 
     	//tanggal
     	'preview_pertama', 'jadwal_1', 'jadwal_2', 'serah_terimah',
@@ -36,10 +35,7 @@ class Pesanan extends Model
         'isEmailed',
 
         //total harga
-        'total_harga',
-
-        //produk_id
-        'produk_id'
+        'total_harga'
     ];
 
     public function User()
@@ -47,9 +43,9 @@ class Pesanan extends Model
     	return $this->belongsTo('App\User');
     }
 
-    public function OrderProduk()
+    public function Produk()
     {
-        return $this->belongsToMany('App\Model\OrderProduk', 'orderproduk_pesanan', 'orderproduk_id', 'pesanan_id');
+        return $this->belongsToMany('App\Model\Produk', 'produk_pesanan', 'produk_id', 'pesanan_id');
     }
 
     public function ListStaff()

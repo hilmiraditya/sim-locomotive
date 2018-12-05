@@ -12,4 +12,9 @@ class ListStaff extends Model
     	'nama', 'email', 'jabatan', 'unit',
     	'no_telefon'
     ];
+
+    public function Pesanan()
+    {
+        return $this->belongsToMany('App\Model\Pesanan', 'liststaff_pesanan', 'liststaff_id', 'pesanan_id');
+    }
 }
