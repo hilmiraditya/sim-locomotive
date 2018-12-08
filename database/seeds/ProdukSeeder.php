@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,8 @@ class ProdukSeeder extends Seeder
                 'nama_produk' => $faker->name,
                 'harga_produk' => $faker->randomNumber(2),
                 'kuantitas_produk' => rand(1,10),
-                'deskripsi_produk' => 'salah satu produk locomotive'
+                'deskripsi_produk' => 'salah satu produk locomotive',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         }
     }

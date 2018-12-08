@@ -1,4 +1,4 @@
-          <div class="form-layout">
+
             <h6 class="card-body-title">BIODATA KLIEN</h6>
             <div class="row mg-b-25">
               <div class="col-lg-12">
@@ -56,4 +56,3 @@
                 </div>
               </div><!-- col-4 -->
             </div><!-- row -->
-          </div><!-- form-layout -->

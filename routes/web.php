@@ -38,6 +38,11 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('HapusProduk/{id}', 'Admin\ProdukController@delete');
       Route::get('DownloadPDF', 'Admin\ProdukController@exportPDF');
     });
+    Route::group(['prefix' => 'ListStaff'], function () {
+      Route::get('DaftarStaff', 'Admin\ListStaffController@index');
+      Route::get('HapusStaff/{id}', 'Admin\ListStaffController@hapus_pesanan');
+      Route::post('TambahStaff', 'Admin\ListStaffController@tambahstaff');
+    }); 
     Route::group(['prefix' => 'Pesanan'], function () {
       Route::get('DaftarPesanan', 'Admin\PesananController@index');
       Route::get('TambahPesanan', 'Admin\PesananController@tambahpesanan_biodata');

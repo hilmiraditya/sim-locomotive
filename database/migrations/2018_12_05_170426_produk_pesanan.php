@@ -17,6 +17,7 @@ class ProdukPesanan extends Migration
             $table->increments('id');
             $table->integer('produk_id')->unsigned();
             $table->integer('pesanan_id')->unsigned();
+            $table->timestamps();
         });
     }
 

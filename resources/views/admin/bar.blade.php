@@ -37,6 +37,12 @@
           <li class="nav-item"><a href="{{url('/Admin/Pesanan/DaftarPesanan')}}" class="nav-link">Daftar Pesanan</a></li>
           <li class="nav-item"><a href="{{ url('/Admin/Pesanan/TambahPesanan')}}" class="nav-link">Tambah Pesanan</a></li>
         </ul>
+        <a href="{{url('/Admin/ListStaff/DaftarStaff')}}" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-person tx-22"></i>
+            <span class="menu-item-label">Staff Locomotive</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
       </div>
       <br>
     </div>

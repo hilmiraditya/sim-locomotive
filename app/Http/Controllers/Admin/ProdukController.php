@@ -14,10 +14,6 @@ use App\Http\Requests\UpdateProdukRequest;
 
 class ProdukController extends Controller
 {
-    public function __construct()
-    {
-        date_default_timezone_set('Asia/Bangkok');
-    }
     public function index()
     {
     	$view = [

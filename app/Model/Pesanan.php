@@ -14,7 +14,7 @@ class Pesanan extends Model
     	'jabatan_klien', 'notelp_klien', 'nowhatsapp_klien', 'instagram_klien',
 
     	//produksi
-    	'agenda_produksi','deskripsi_agenda_produksi',
+    	'agenda_produksi_dari','agenda_produksi_hingga','deskripsi_agenda_produksi',
 
     	//tanggal
     	'preview_pertama', 'jadwal_1', 'jadwal_2', 'serah_terimah',
@@ -45,11 +45,11 @@ class Pesanan extends Model
 
     public function Produk()
     {
-        return $this->belongsToMany('App\Model\Produk', 'produk_pesanan', 'produk_id', 'pesanan_id');
+        return $this->belongsToMany('App\Model\Produk', 'produk_pesanan', 'produk_id', 'pesanan_id')->withTimestamps();
     }
 
     public function ListStaff()
     {
-        return $this->belongsToMany('App\Model\ListStaff', 'liststaff_pesanan', 'liststaff_id', 'pesanan_id');
+        return $this->belongsToMany('App\Model\ListStaff', 'liststaff_pesanan', 'liststaff_id', 'pesanan_id')->withTimestamps();
     }
 }

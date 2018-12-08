@@ -15,11 +15,11 @@ class ListStaff extends Migration
     {
         Schema::create('ListStaff', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('email');
-            $table->string('jabatan');
-            $table->string('unit');
-            $table->string('no_telefon');
+            $table->string('nama_staff');
+            $table->string('email_staff');
+            $table->string('jabatan_staff');
+            $table->string('unit_staff');
+            $table->string('no_telefon_staff');
             $table->timestamps();
         });
     }

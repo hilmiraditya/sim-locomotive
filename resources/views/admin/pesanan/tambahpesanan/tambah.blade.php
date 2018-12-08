@@ -40,7 +40,6 @@
           </div>
           @endif
           <form method="post" action="{{url('Admin/Pesanan/TambahPesanan')}}">
-          <input class="form-control" type="hidden" id="pilihpesananproduk" name="pilihanpesananproduk" value="">
           @csrf
             <div id="wizard1">
               <h3>Biodata</h3>

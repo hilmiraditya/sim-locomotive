@@ -30,9 +30,11 @@
       </nav>
 
       <div class="sl-pagebody">
+        <div class="sl-page-title">
+          <h5>Detail Pesanan</h5>
+          <p>Pesanan atas nama : <b>{{ $view['pesanan']->nama_klien }}</b> | Dipesan pada : <b>{{$view['pesanan']->created_at}}</b></p>
+        </div><!-- sl-page-title -->
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Lihat Pesanan</h6>
-          <p class="mg-b-20 mg-sm-b-30">Pesanan atas nama : <b>{{ $view['pesanan']->nama_klien }}</b> | Dipesan pada : <b>{{$view['pesanan']->created_at}}</b></p>
           @if (count($errors) > 0)
           <div class = "alert alert-danger">
               <ul>
@@ -42,20 +44,11 @@
               </ul>
           </div>
           @endif
-            <div id="wizard1">
-              <h3>Biodata dan Progress</h3>
-              <section>
+            <div id="card pd-20 pd-sm-40">
                 @include('admin.pesanan.lihatpesanan.lihatsubprogress')
                 @include('admin.pesanan.lihatpesanan.lihatsubbiodata')
-              </section>
-              <h3>Pemesanan Produk</h3>
-              <section>
                 @include('admin.pesanan.lihatpesanan.lihatsubproduk')
-              </section>
-              <h3>Produksi</h3>
-              <section>
                 @include('admin.pesanan.lihatpesanan.lihatsubproduksi')
-              </section>
             </div>
         </div><!-- card -->
       </div><!-- sl-pagebody -->
@@ -66,7 +59,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLabel">Progress Pesanan :</h4>
+            <h5 class="modal-title" id="exampleModalLabel">Progress Pesanan </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -84,12 +77,12 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Ubah Progress</button>
+            <button type="submit" class="btn btn-sm btn-primary">Ubah Progress</button>
           </div>
           </form>
         </div>
       </div>
-</div>
+    </div>
     <script src="{{ url('admin_page/lib/jquery/jquery.js') }}"></script>
     <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>
     <script src="{{ url('admin_page/lib/bootstrap/bootstrap.js') }}"></script>

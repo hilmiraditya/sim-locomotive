@@ -1,5 +1,6 @@
-          <div class="form-layout">
-            <h6 class="card-body-title">PROGRESS PESANAN :</h6>
+          
+            <h6 class="card-body-title">PROGRESS </h6>
+            <p class="mg-b-20 mg-sm-b-30">Kondisi Progress Pesanan Client</p>
             <div class="row mg-b-25">
               <div class="col-lg-10">
                 <div class="form-group">
@@ -14,5 +15,4 @@
 					</button>
               	</div>
               </div>
-            </div>
-         </div>
+            </div> 

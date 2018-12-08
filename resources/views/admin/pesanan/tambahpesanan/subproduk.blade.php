@@ -24,6 +24,7 @@
               		<td>
                     <input type="checkbox" name="vehicle" id="confirm{{$produk->id}}"
                     onclick="tambahdata({{$produk->harga_produk}},{{$produk->id}})" value="{{$produk->id}}">
+                    <input type="hidden" id="pilihpesananproduk" name="pilihanpesananproduk" value="">
               		</td>
                   <?php $a++; ?>
                   @endforeach

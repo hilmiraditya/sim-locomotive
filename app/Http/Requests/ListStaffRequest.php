@@ -13,7 +13,7 @@ class ListStaffRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,11 +24,11 @@ class ListStaffRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama'      => 'required',
-            'email'     => 'unique:users,email|required',
-            'jabatan'  => 'required',
-            'unit'      => 'required',
-            'no_telefon' => 'numeric|required'
+            'nama_staff'      => 'required',
+            'email_staff'     => 'unique:users,email|required',
+            'jabatan_staff'  => 'required',
+            'unit_staff'      => 'required',
+            'no_telefon_staff' => 'numeric|required'
         ];
     }
      /**
@@ -39,13 +39,14 @@ class ListStaffRequest extends FormRequest
     public function messages()
     {
         return [
-            'nama.required' => 'Nama tidak boleh kosong.',
-            'email.email' => 'Format alamat email tidak sesuai.',
-            'email.required' => 'Alamat email tidak boleh kosong.',
-            'email.unique' => 'Alamat email telah terdaftar.',
-            'unit.required' => 'Unit harus diisi.',
-            'no_telefon.required' => 'Nomor Handphone tidak boleh kosong.',
-            'no_telefon.numeric' => 'Nomor Handphone harus angka saja.',
+            'jabatan_staff.required' => 'Jabatan harus diisi.',
+            'nama_staff.required' => 'Nama tidak boleh kosong.',
+            'email_staff.email' => 'Format alamat email tidak sesuai.',
+            'email_staff.required' => 'Alamat email tidak boleh kosong.',
+            'email_staff.unique' => 'Alamat email telah terdaftar.',
+            'unit_staff.required' => 'Unit harus diisi.',
+            'no_telefon_staff.required' => 'Nomor Handphone tidak boleh kosong.',
+            'no_telefon_staff.numeric' => 'Nomor Handphone harus angka saja.',
         ];
     }
 }

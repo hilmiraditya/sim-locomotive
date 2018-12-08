@@ -17,6 +17,7 @@ class ListstaffPesanan extends Migration
             $table->increments('id');
             $table->integer('liststaff_id')->unsigned();
             $table->integer('pesanan_id')->unsigned();
+            $table->timestamps();
         });
     }
 

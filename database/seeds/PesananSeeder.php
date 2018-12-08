@@ -27,6 +27,8 @@ class PesananSeeder extends Seeder
         	$pesanan->nowhatsapp_klien = $faker->e164PhoneNumber;
         	$pesanan->instagram_klien = 'Percobaan';
         	//agenda produksi
+            $pesanan->agenda_produksi_dari = $faker->date($format = 'Y-m-d', $max = 'now');
+            $pesanan->agenda_produksi_hingga = $faker->date($format = 'Y-m-d', $min = 'now');
         	$pesanan->deskripsi_agenda_produksi = 'ini adalah deskripsinya hehehehe';
         	//jadwal revisi dan serah terima
         	$pesanan->preview_pertama = $faker->date($format = 'Y-m-d', $max = 'now');
@@ -44,6 +46,8 @@ class PesananSeeder extends Seeder
         	$pesanan->nama_penginput = 'Hilmi Raditya';
 
         	$pesanan->save();
+
+            Pesanan::find($pesanan->id)->Produk()->attach([1,2,3,4]);
         }
     }
 }

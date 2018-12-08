@@ -11,9 +11,23 @@
                   </select>
                 </div>
               </div><!-- col-4 -->
+              <div class="col-lg-6">
+                <p class="mg-b-10">Tanggal Awal Produksi : <span class="tx-danger">*</span></p>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
+                <input type="date" name="agenda_produksi_dari" class="form-control">
+              </div>
+              </div><!-- col-4 -->
+              <div class="col-lg-6">
+                <p class="mg-b-10">Tanggal Akhir Produksi : <span class="tx-danger">*</span></p>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
+                <input type="date" name="agenda_produksi_hingga" class="form-control">
+              </div>
+              </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Produksi : <span class="tx-danger">*</span></label>
+                  <label class="form-control-label">Deskripsi Produksi : <span class="tx-danger">*</span></label>
                   <textarea class="form-control" type="text" name="deskripsi_agenda_produksi">Tanggal ____________ Acara _______________ Tempat________________
                   </textarea>
                 </div>

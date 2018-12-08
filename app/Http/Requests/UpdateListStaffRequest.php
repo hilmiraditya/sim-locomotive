@@ -13,13 +13,7 @@ class UpdateListStaffRequest extends FormRequest
      */
     public function authorize()
     {
-        return [
-            'nama'      => 'required',
-            'email'     => 'required',
-            'jabatan'  => 'required',
-            'unit'      => 'required',
-            'no_telefon' => 'numeric|required'
-        ];
+        return true;
     }
 
     /**
@@ -30,7 +24,24 @@ class UpdateListStaffRequest extends FormRequest
     public function rules()
     {
         return [
+            'nama'      => 'required',
+            'email'     => 'email|required',
+            'jabatan'  => 'required',
+            'unit'      => 'required',
+            'no_telefon' => 'numeric|required'
+        ];
+    }
+     /**
+     * Custom message for validation
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'jabatan.required' => 'Jabatan harus diisi.'
             'nama.required' => 'Nama tidak boleh kosong.',
+            'email.email' => 'Format alamat email tidak sesuai.',
             'email.required' => 'Alamat email tidak boleh kosong.',
             'unit.required' => 'Unit harus diisi.',
             'no_telefon.required' => 'Nomor Handphone tidak boleh kosong.',

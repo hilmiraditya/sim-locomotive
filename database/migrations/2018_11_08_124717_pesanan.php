@@ -27,7 +27,8 @@ class Pesanan extends Migration
             $table->string('instagram_klien')->nullable();
             
             //agenda produksi
-            $table->date('agenda_produksi');
+            $table->date('agenda_produksi_dari');
+            $table->date('agenda_produksi_hingga');
             $table->string('deskripsi_agenda_produksi',300);
 
             //jadwal revisi dan serah terima

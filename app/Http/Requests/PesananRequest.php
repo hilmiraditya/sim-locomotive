@@ -34,6 +34,9 @@ class PesananRequest extends FormRequest
             'jadwal_1'      => 'date',
             'jadwal_2'      => 'date',
             'serah_terimah'     => 'date',
+            'agenda_produksi_dari' => 'date|required',
+            'agenda_produksi_hingga' => 'date|required|greater_than_field:agenda_produksi_dari',
+            'deskripsi_agenda_produksi' => 'required',
             'unit_produksi' =>  'required',
             'total_harga'   => 'integer'
         ];
@@ -47,6 +50,12 @@ class PesananRequest extends FormRequest
     public function messages()
     {
         return [
+            'agenda_produksi_dari.date' => 'Tanggal awal agenda produksi harus berbentuk tanggal',
+            'agenda_produksi_dari.required' => 'Tanggal awal agenda produksi harus diisi',
+            'agenda_produksi_hingga.date' => 'Tanggal akhir agenda produksi harus berbentuk tanggal',
+            'agenda_produksi_hingga.greater_than_field' => 'Salah input pada tanggal akhir agenda produksi',
+            'agenda_produksi_hingga.required' => 'Tanggal akhir agenda produksi harus diisi',
+            'deskripsi_agenda_produksi.required' => 'Deskripsi agenda produksi tidak boleh kosong',
             'nama_klien.required' => 'Nama tidak boleh kosong.',
             'noidentitas_klien.required' => 'Nomor Identitas tidak boleh kosong.',
             'alamat_klien.required' => 'Alamat tidak boleh kosong.',  

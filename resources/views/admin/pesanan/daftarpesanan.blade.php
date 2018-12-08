@@ -36,6 +36,7 @@
                   <th>Email</th>
                   <th>Progress</th>
                   <th>Input</th>
+                  <th>Tanggal Dibuat</th>
                   <th>Opsi</th>
                 </tr>
               </thead>
@@ -59,14 +60,15 @@
                   </td>
                   <td style="color: white;">
                   @if($pesanan->status_pesanan == 0)
-                    <a class="btn btn-sm btn-warning">Dibatalkan</a>
+                    <a class="btn btn-sm btn-danger">Dibatalkan</a>
                   @elseif($pesanan->status_pesanan == 1)
-                    <a class="btn btn-sm btn-primary">Sedang Berjalan</a>
+                    <a class="btn btn-sm btn-warning">Sedang Berjalan</a>
                   @else
                     <a class="btn btn-sm btn-success">Selesai</a>
                   @endif
                   </td>
               		<td>{{ $pesanan->User->name }}</td>
+                  <td>{{ $pesanan->created_at }}
               		<td style="color: white;">
               			<a href="{{ url('Admin/Pesanan/LihatPesanan/'.$pesanan->id) }}" class="btn btn-sm btn-primary">Detil</a>
                     <a href="{{ url('Admin/Pesanan/KirimEmail/'.$pesanan->id) }}" class="btn btn-sm btn-success">Email</a>
