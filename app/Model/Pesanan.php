@@ -45,11 +45,11 @@ class Pesanan extends Model
 
     public function Produk()
     {
-        return $this->belongsToMany('App\Model\Produk', 'produk_pesanan', 'produk_id', 'pesanan_id')->withTimestamps();
+        return $this->belongsToMany('App\Model\Produk', 'produk_pesanan', 'pesanan_id', 'produk_id')->withTimestamps();
     }
 
     public function ListStaff()
     {
-        return $this->belongsToMany('App\Model\ListStaff', 'liststaff_pesanan', 'liststaff_id', 'pesanan_id')->withTimestamps();
+        return $this->belongsToMany('App\Model\ListStaff', 'liststaff_pesanan', 'pesanan_id', 'liststaff_id')->withTimestamps();
     }
 }

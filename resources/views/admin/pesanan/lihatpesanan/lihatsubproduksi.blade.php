@@ -11,14 +11,14 @@
                 <p class="mg-b-10">Tanggal Awal Produksi : <span class="tx-danger">*</span></p>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
-                <input type="date" name="agenda_produksi_dari" class="form-control" disabled>
+                <input type="date" name="agenda_produksi_dari" class="form-control" value="{{ $view['pesanan']->agenda_produksi_dari }}" disabled>
               </div>
               </div><!-- col-4 -->
               <div class="col-lg-6">
                 <p class="mg-b-10">Tanggal Akhir Produksi : <span class="tx-danger">*</span></p>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
-                <input type="date" name="agenda_produksi_hingga" class="form-control" disabled>
+                <input type="date" name="agenda_produksi_hingga" class="form-control" value="{{ $view['pesanan']->agenda_produksi_hingga }}" disabled>
               </div>
               </div>
               <div class="col-lg-12">
@@ -37,6 +37,7 @@
                 </div>
               </div><!-- col-4 -->
             </div><!-- row -->
+            @include('admin.pesanan.lihatpesanan.lihatsubstaff')
             <h6 class="card-body-title">Revisi & Serah Terima</h6>
             <div class="row mg-b-25">
               <div class="col-lg-6">
@@ -68,6 +69,3 @@
               </div>
               </div><!-- col-4 -->
             </div><!-- row -->
-          <div align="center">
-            <a href="{{ url('Admin/Pesanan/UbahPesanan/'.$view['pesanan']->id) }}" class="btn btn-primary">Ubah Pesanan</a>
-          </div>

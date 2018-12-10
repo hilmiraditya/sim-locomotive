@@ -14,6 +14,9 @@
     <link href="{{ url('admin_page/lib/highlightjs/github.css') }}" rel="stylesheet">
     <link href="{{ url('admin_page/lib/jquery.steps/jquery.steps.css') }}" rel="stylesheet">
 
+    <link href="{{ url('admin_page/lib/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ url('admin_page/lib/spectrum/spectrum.css') }}" rel="stylesheet">
+
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ url('admin_page/css/starlight.css') }}">
   </head>
@@ -44,45 +47,24 @@
               </ul>
           </div>
           @endif
+          @if(session()->has('pesan_sukses'))
+            <div class="alert alert-success" role="alert">
+            {{session()->get('pesan_sukses')}}
+            </div>       
+          @endif
             <div id="card pd-20 pd-sm-40">
                 @include('admin.pesanan.lihatpesanan.lihatsubprogress')
                 @include('admin.pesanan.lihatpesanan.lihatsubbiodata')
                 @include('admin.pesanan.lihatpesanan.lihatsubproduk')
                 @include('admin.pesanan.lihatpesanan.lihatsubproduksi')
+                <div align="center">
+                  <a href="{{ url('Admin/Pesanan/UbahPesanan/'.$view['pesanan']->id) }}" class="btn btn-primary">Ubah Pesanan</a>
+                </div>
             </div>
         </div><!-- card -->
       </div><!-- sl-pagebody -->
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
-    <!-- Modal -->
-    <div class="modal fade" id="modalpesanan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Progress Pesanan </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form method="post" action="{{ url('Admin/Pesanan/UbahStatusPesanan/'.$view['pesanan']->id) }}">
-          @csrf
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="exampleFormControlSelect2">Status Pesanan :</label>
-              <select class="form-control" name="status_pesanan">
-                <option value="0">Dibatalkan</option>
-                <option value="1">Sedang Berjalan</option>
-                <option value="2">Sudah Selesai</option>
-              </select>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-sm btn-primary">Ubah Progress</button>
-          </div>
-          </form>
-        </div>
-      </div>
-    </div>
     <script src="{{ url('admin_page/lib/jquery/jquery.js') }}"></script>
     <script src="{{ url('admin_page/lib/popper.js/popper.js') }}"></script>
     <script src="{{ url('admin_page/lib/bootstrap/bootstrap.js') }}"></script>

@@ -50,14 +50,14 @@
               	@foreach($view['staff'] as $acc)
                 <tr>
                   <td>{{$a}}</td>
-                  <td>{{$acc->nama}}</td>
-                  <td>{{$acc->email}}</td>
+                  <td>{{$acc->nama_staff}}</td>
+                  <td>{{$acc->email_staff}}</td>
                   <td>
-                    @if($acc->unit == "Production") <a style="color: white;" class="btn btn-sm btn-primary">Production</a>
+                    @if($acc->unit_staff == "Production") <a style="color: white;" class="btn btn-sm btn-primary">Production</a>
                     @else <a style="color: white;" class="btn btn-sm btn-success">Wedding</a>
                     @endif
                   </td>
-                  <td>{{$acc->jabatan}}</td>
+                  <td>{{$acc->jabatan_staff}}</td>
                   <td>
                     <button style="color: white;" type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#detilmodal{{$acc->id}}">Detil
                     </button>
@@ -191,66 +191,142 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Nama:</label>
-                  <input class="form-control" type="text" value="{{$acc->nama}}" disabled>
+                  <input class="form-control" type="text" value="{{$acc->nama_staff}}" disabled>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Email :</label>
-                  <input class="form-control" type="text" value="{{$acc->email}}" disabled>
+                  <input class="form-control" type="text" value="{{$acc->email_staff}}" disabled>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">Jabatan :</label>
-                  <input class="form-control" type="text" value="{{$acc->jabatan}}" disabled>
+                  <input class="form-control" type="text" value="{{$acc->jabatan_staff}}" disabled>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">Unit :</label>
-                  <input class="form-control" type="text" value="{{$acc->unit}}" disabled>
+                  <input class="form-control" type="text" value="{{$acc->unit_staff}}" disabled>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">No. Handphone :</label>
-                  <input class="form-control" type="text" value="{{$acc->no_telefon}}" disabled>
+                  <input class="form-control" type="text" value="{{$acc->no_telefon_staff}}" disabled>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-12">
-                <label class="form-control-label">Pembagian Kerja :</label>
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Tanggal</th>
-                      <th scope="col">Keterangan</th>
-                      <th scope="col">Nama Client</th>
-                      <th scope="col">Opsi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div id="accordion" class="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="card">
+                    <div class="card-header" role="tab" id="headingOne">
+                      <h6 class="mg-b-0">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="tx-gray-800 transition collapsed">
+                          Pekerjaan yang dikerjakan
+                        </a>
+                      </h6>
+                    </div><!-- card-header -->
+
+                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" style="">
+                      <div class="card-body">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">No</th>
+                              <th scope="col">Tanggal</th>
+                              <th scope="col">Keterangan</th>
+                              <th scope="col">Nama Client</th>
+                              <th scope="col">Opsi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                              <td>
+                                <a href="#" class="btn btn-sm btn-danger">Opsi</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" role="tab" id="headingTwo">
+                      <h6 class="mg-b-0">
+                        <a class="collapsed transition" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Pekerjaan yang sudah selesai
+                        </a>
+                      </h6>
+                    </div>
+                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                      <div class="card-body">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">No</th>
+                              <th scope="col">Tanggal</th>
+                              <th scope="col">Keterangan</th>
+                              <th scope="col">Nama Client</th>
+                              <th scope="col">Opsi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                              <td>
+                                <a href="#" class="btn btn-sm btn-danger">Opsi</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" role="tab" id="headingThree">
+                      <h6 class="mg-b-0">
+                        <a class="collapsed transition" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Pekerjaan yang dibatalkan
+                        </a>
+                      </h6>
+                    </div>
+                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                      <div class="card-body">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">No</th>
+                              <th scope="col">Tanggal</th>
+                              <th scope="col">Keterangan</th>
+                              <th scope="col">Nama Client</th>
+                              <th scope="col">Opsi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                              <td>
+                                <a href="#" class="btn btn-sm btn-danger">Opsi</a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div><!-- collapse -->
+                  </div><!-- card -->
+                </div>
               </div>
             </div><!-- row -->
           </div><!-- form-layout -->

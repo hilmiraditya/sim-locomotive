@@ -9,10 +9,39 @@
                 </div>
               </div>
               <div class="col-lg-2">
-              	<div class="form-grup">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalpesanan">
-  						Ubah Progress
-					</button>
+              	<div class="form-group">
+            			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalpesanan">
+            					Ubah Progress
+            			</button>
               	</div>
               </div>
             </div> 
+            <!-- Modal -->
+            <div class="modal fade" id="modalpesanan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">UBAH PROGRESS</h6>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form method="post" action="{{ url('Admin/Pesanan/UbahStatusPesanan/'.$view['pesanan']->id) }}">
+                    @csrf
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label>Status Pesanan :</label>
+                        <select class="form-control" name="status_pesanan">
+                          <option value="0">Dibatalkan</option>
+                          <option value="1">Sedang Berjalan</option>
+                          <option value="2">Sudah Selesai</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-sm btn-primary">Ubah Progress</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>

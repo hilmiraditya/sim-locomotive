@@ -145,11 +145,11 @@
       }
       function tambahdata(harga, id){
         var awal, hasil, produk, temp_produk;
-        temp_produk = document.getElementById("pilihpesananproduk").value;
+        temp_produk = document.getElementById("pilihanpesananproduk").value;
         awal = parseInt(document.getElementById("hpp_value").value);
         if (document.getElementById("confirm".concat(id)).checked == true){
           hasil = awal + harga;
-          document.getElementById("pilihpesananproduk").value =  temp_produk + (id + '-');
+          document.getElementById("pilihanpesananproduk").value =  temp_produk + (id + '-');
         }
         else{
           hasil = awal - harga;
@@ -157,7 +157,7 @@
           for(i=0;i<produk.length;i++){
             if(produk[i] == id) produk.splice(i,1);
           }
-          document.getElementById("pilihpesananproduk").value = produk.join('-');
+          document.getElementById("pilihanpesananproduk").value = produk.join('-');
         }
         //value
         document.getElementById("hpp_value").value = hasil;

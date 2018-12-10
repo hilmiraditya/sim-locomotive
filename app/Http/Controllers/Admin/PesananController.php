@@ -11,10 +11,12 @@ use Carbon\Carbon;
 
 use App\Model\Pesanan;
 use App\Model\Produk;
+use App\Model\ListStaff;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PesananRequest;
+use App\Http\Requests\InviteListStaffRequest;
 
 class PesananController extends Controller
 {
@@ -43,9 +45,9 @@ class PesananController extends Controller
             $pesanan->total_harga = $request->get('total_harga');
             $pesanan->user_id = Auth::id();
             $pesanan->nama_penginput = Auth::user()->name;
+            $pesanan->pilihanpesananproduk = $request->get('pilihanpesananproduk');
             $pesanan->save();
-            
-            $pesananproduk = explode("-",$request->get('pilihanpesananproduk'));
+            $pesananproduk = array_filter(explode("-",$request->get('pilihanpesananproduk')));
             Pesanan::find($pesanan->id)->Produk()->attach($pesananproduk);
             DB::commit();
         } catch (Exception $e) {
@@ -76,25 +78,21 @@ class PesananController extends Controller
     }
     public function detil_pesanan($id)
     {
-        $orderproduk = Produk::whereHas('Pesanan', function($q) use ($id) {
-            $q->where('pesanan_id', $id);
-        })->get();
         $view = [
             'pesanan' => Pesanan::find($id),
             'user'=> Auth::user(),
-            'orderproduk' => $orderproduk
+            'orderproduk' => Pesanan::find($id)->Produk()->get(),
+            'liststaff' => Pesanan::find($id)->ListStaff()->get(),
+            'staff' => ListStaff::all()
         ];
         return view('admin.pesanan.lihatpesanan.lihat')->with(compact('view'));
     }
     public function ubah_pesanan($id)
     {
-        $orderproduk = Produk::whereHas('Pesanan', function($q) use ($id) {
-            $q->where('pesanan_id', $id);
-        })->get();
         $view = [
             'pesanan' => Pesanan::find($id),
             'user'=> Auth::user(),
-            'orderproduk' => $orderproduk
+            'orderproduk' => Pesanan::find($id)->Produk()->get()
         ];
         return view('admin.pesanan.ubahpesanan.ubahpesanan')->with(compact('view'));
     }
@@ -106,7 +104,7 @@ class PesananController extends Controller
     }
     public function hapus_pesanan($id)
     {
-        Pesanan::find($id)->delete();
+        Pesanan::find($id)->Produk()->delete();
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Pesanan berhasil dihapus');
     }
     public function kirim_email_pesanan($id)
@@ -115,7 +113,7 @@ class PesananController extends Controller
         $data = array(
             'pesanan'=> $pesanan,
             'waktu' =>  Carbon::now(),
-            'orderproduk' => OrderProduk::where('pesanan_id', $pesanan->pesanan_id)->get()
+            'orderproduk' => Pesanan::find($id)->Produk()->get()
         );
         Mail::send('admin.pesanan.email.email', compact('data'),function($message)use($data)
         {
@@ -127,9 +125,17 @@ class PesananController extends Controller
         $pesanan->save();
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', "Invoice pesanan atas nama ".$data['pesanan']->nama_klien." berhasil dikirim ke ".$data['pesanan']->email_klien);
     }
+    public function tambah_staff(InviteListStaffRequest $request, $id)
+    {
+        $validated = $request->validated();
+        //dd($request->id_staff);
+        //dd($id);
+        Pesanan::find($id)->ListStaff()->attach($request->id_staff);
+        return Redirect::back()->with('pesan_sukses', 'Staff berhasil diundang ke dalam agenda produksi');
+    }
     public function ubah_status_pesanan(Request $request, $id)
     {
-        $pesanan = Pesanan::where('id', $id)->first();
+        $pesanan = Pesanan::find($id);
         // status pesanan : 0 = dibatalkan, 1 = sedang berjalan, 2 = sudah selesai
         $pesanan->status_pesanan = $request->get('status_pesanan');
         $pesanan->save();

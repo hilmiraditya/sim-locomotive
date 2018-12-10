@@ -14,6 +14,6 @@ class Produk extends Model
 
     public function Pesanan()
     {
-    	return $this->belongsToMany('App\Model\Pesanan', 'produk_pesanan', 'produk_id', 'pesanan_id')->withTimestamps();
+    	return $this->belongsToMany('App\Model\Pesanan', 'produk_pesanan', 'pesanan_id', 'produk_id')->withTimestamps();
     }
 }

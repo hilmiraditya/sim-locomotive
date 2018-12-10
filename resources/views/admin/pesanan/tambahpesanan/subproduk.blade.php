@@ -6,6 +6,7 @@
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
+                  <th>ID</th>
                   <th>Harga</th>
                   <th>Kuantitas</th>
                   <th>Deskripsi</th>
@@ -18,19 +19,20 @@
               	<tr>
               		<td>{{ $a }}</td>
               		<td>{{ $produk->nama_produk }}</td>
+                  <td>{{ $produk->id }}</td>
               		<td>{{ "Rp ".number_format($produk->harga_produk,0,',','.').",-" }}</td>
               		<td>{{ $produk->kuantitas_produk }}</td>
               		<td>{{ $produk->deskripsi_produk }}</td>
               		<td>
                     <input type="checkbox" name="vehicle" id="confirm{{$produk->id}}"
                     onclick="tambahdata({{$produk->harga_produk}},{{$produk->id}})" value="{{$produk->id}}">
-                    <input type="hidden" id="pilihpesananproduk" name="pilihanpesananproduk" value="">
               		</td>
                   <?php $a++; ?>
                   @endforeach
               	</tr>
               </tbody>
             </table>
+            <input type="hidden" id="pilihanpesananproduk" name="pilihanpesananproduk" value="">
             <br>
             <div class="row">
               <div class="col-lg-12">

@@ -6,6 +6,7 @@ use DB;
 use Auth;
 use Redirect;
 use App\Model\ListStaff;
+use App\Model\Pesanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ListStaffRequest;
@@ -41,7 +42,24 @@ class ListStaffController extends Controller
     	$validated = $request->validated();
     	$this->input_request(new ListStaff, $request);
         return redirect::back()->with('pesan_sukses', 'List Staff berhasil ditambah');
-    }
+	}
+	// public function tambahstaff_ajax(ListStaffRequest $request)
+	// {
+	// 	$validated = $request->validated();
+	// 	$validator = Validator::make ( Input::all (), $rules );
+	// 	if ($validator->fails ())
+	// 		return Response::json ( array (
+						
+	// 				'errors' => $validator->getMessageBag ()->toArray ()
+	// 		) );
+	// 		else {
+	// 			$data = new Data ();
+	// 			$data->name = $request->name;
+	// 			$data->save ();
+	// 			return response ()->json ( $data );
+	// 		}
+	// 	return response()->json($this->input_request(new ListStaff, $request))->with('pesan_sukses', 'List Staff berhasil ditambah');
+	// }
     public function hapus_pesanan($id)
     {
     	ListStaff::find($id)->delete();

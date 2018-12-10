@@ -14,6 +14,6 @@ class ListStaff extends Model
 
     public function Pesanan()
     {
-    	return $this->belongsToMany('App\Model\Pesanan', 'liststaff_pesanan', 'liststaff_id', 'pesanan_id');
+    	return $this->belongsToMany('App\Model\Pesanan', 'liststaff_pesanan', 'pesanan_id', 'liststaff_id');
     }
 }

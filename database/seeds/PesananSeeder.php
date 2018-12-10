@@ -14,7 +14,7 @@ class PesananSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach(range(0,5) as $i){
+        //foreach(range(0,5) as $i){
         	$pesanan = New Pesanan;
         	//biodata
         	$pesanan->nama_klien = $faker->name;
@@ -44,10 +44,13 @@ class PesananSeeder extends Seeder
         	//nama penginput
         	$pesanan->user_id = 1;
         	$pesanan->nama_penginput = 'Hilmi Raditya';
+            //pilihan pesanan produk
 
+            $pilihanpesananproduk = '1-2-3-4';
+            $pesanan->pilihanpesananproduk = $pilihanpesananproduk;
         	$pesanan->save();
-
-            Pesanan::find($pesanan->id)->Produk()->attach([1,2,3,4]);
-        }
+            $pesananproduk = explode("-",$pilihanpesananproduk);
+            Pesanan::find($pesanan->id)->Produk()->attach($pesananproduk);
+        //}
     }
 }

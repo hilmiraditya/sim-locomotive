@@ -31,11 +31,10 @@
                 <tr>
                   <th>No</th>
                   <th>Nama Client</th>
-                  <th>Unit</th>
                   <th>Kontak</th>
                   <th>Email</th>
                   <th>Progress</th>
-                  <th>Input</th>
+                  <th>Unit</th>
                   <th>Tanggal Dibuat</th>
                   <th>Opsi</th>
                 </tr>
@@ -46,7 +45,6 @@
               	<tr>
               		<td>{{ $a }}</td>
               		<td>{{ $pesanan->nama_klien }}</td>
-              		<td>{{ $pesanan->unit_produksi }}</td>
                   <td>
                     <img style="width: 12px;" src="{{url('images/whatsapp.png')}}"> : {{ $pesanan->nowhatsapp_klien}}<br>
                     <img style="width: 12px;" src="{{url('images/phone.png')}}"> : {{ $pesanan->notelp_klien }}
@@ -67,7 +65,7 @@
                     <a class="btn btn-sm btn-success">Selesai</a>
                   @endif
                   </td>
-              		<td>{{ $pesanan->User->name }}</td>
+                  <td>{{ $pesanan->unit_produksi }}</td>
                   <td>{{ $pesanan->created_at }}
               		<td style="color: white;">
               			<a href="{{ url('Admin/Pesanan/LihatPesanan/'.$pesanan->id) }}" class="btn btn-sm btn-primary">Detil</a>

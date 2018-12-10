@@ -193,11 +193,41 @@
         </tbody>
       </table>
       <br>
-      <!-- Agenda Produksi -->
+      <!-- AGENDA Produksi -->
       <table width="800">
         <tbody>
           <tr>
             <td colspan="2"><strong>AGENDA PRODUKSI</strong></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <table width="800" border="0" cellpadding="5" cellspacing="0" style="border:1px solid black;border-collapse:collapse">
+                <tbody>
+                  <tr>
+                    <td><strong>Periode Awal Produksi</strong></td>
+                    <td>Tanggal <strong>{{$data['pesanan']->agenda_produksi_dari}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Periode Akhir Produksi</strong></td>
+                    <td>Tanggal <strong>{{$data['pesanan']->agenda_produksi_hingga}}</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- DESKRIPSI Agenda Produksi -->
+      <table width="800">
+        <tbody>
+          <tr>
+            <td colspan="2"><strong>DESKRIPSI AGENDA PRODUKSI</strong></td>
           </tr>
           <tr>
             <td>&nbsp;</td>
