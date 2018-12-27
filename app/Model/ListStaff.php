@@ -15,6 +15,6 @@ class ListStaff extends Model
 
     public function Pesanan()
     {
-        return $this->belongsToMany('App\Model\Pesanan', 'liststaff_pesanan', 'liststaff_id', 'pesanan_id')->withTimestamps();
+        return $this->belongsToMany('App\Model\Pesanan', 'liststaff_pesanan', 'liststaff_id', 'pesanan_id')->withPivot('keterangan_invitasi','status_invitasi')->withTimestamps();
     }
 }

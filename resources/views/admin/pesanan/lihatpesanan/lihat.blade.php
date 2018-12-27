@@ -144,6 +144,17 @@
 
       });
     </script>
+    {{-- generate staff baru --}}
+    <script>
+      function new_staff(nama,id){
+        if (document.getElementById("confirmstaff".concat(id)).checked == true){
+          $('#untukketeranganstaff').append('<div id="keteranganstaff'+id+'"><br><h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Keterangan untuk '+nama+'  : </h6><br><textarea name="keterangan_invitasi[]" class="form-control"></textarea></div>');
+        }
+        else{
+          $('#keteranganstaff'+id).remove();
+        }   
+      }
+    </script>
     <script>
       function tambahdata(harga, id)
       {

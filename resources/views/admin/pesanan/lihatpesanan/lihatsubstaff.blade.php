@@ -81,14 +81,15 @@
                       </td>
                       <td>{{$acc->jabatan_staff}}</td>
                       <td>
-                        <input type="checkbox" name="id_staff[]" value="{{$acc->id}}" id="confirm{{$acc->id}}">
+                        <input type="checkbox" name="id_staff[]" value="{{$acc->id}}" id="confirmstaff{{$acc->id}}" onclick="new_staff('{{$acc->nama_staff}}','{{$acc->id}}')">
                       </td>
                     </tr>
                     <?php $a++; ?>
                     @endforeach
                   </tbody>
                 </table>
-              
+                <div id="untukketeranganstaff">
+                </div>                            
               @else
               <div>
                   <div class="alert alert-danger">

@@ -47,8 +47,9 @@ class PesananController extends Controller
             $pesanan->nama_penginput = Auth::user()->name;
             $pesanan->pilihanpesananproduk = $request->get('pilihanpesananproduk');
             $pesanan->save();
-            $pesananproduk = array_filter(explode("-",$request->get('pilihanpesananproduk')));
-            Pesanan::find($pesanan->id)->Produk()->attach($pesananproduk);
+            // $pesananproduk = array_filter(explode("-",$request->get('pilihanpesananproduk')));
+            // Pesanan::find($pesanan->id)->Produk()->attach($pesananproduk);
+            Pesanan::find($pesanan->id)->Produk()->attach($request->get('produk_id'));
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
@@ -128,9 +129,7 @@ class PesananController extends Controller
     public function tambah_staff(InviteListStaffRequest $request, $id)
     {
         $validated = $request->validated();
-        //dd($request->id_staff);
-        //dd($id);
-        Pesanan::find($id)->ListStaff()->attach($request->id_staff);
+        Pesanan::find($id)->ListStaff()->attach($request->get('id_staff'),['keterangan_invitasi'=>$request->get('keterangan_invitasi'),'status_invitasi'=>1]);
         return Redirect::back()->with('pesan_sukses', 'Staff berhasil diundang ke dalam agenda produksi');
     }
     public function ubah_status_pesanan(Request $request, $id)
