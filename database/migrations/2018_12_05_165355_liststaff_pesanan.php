@@ -19,9 +19,7 @@ class ListstaffPesanan extends Migration
             $table->integer('pesanan_id')->unsigned();
             $table->foreign('liststaff_id')->references('id')->on('ListStaff');
             $table->foreign('pesanan_id')->references('id')->on('Pesanan');
-            //status invitasi : 1 = berjalan, 2 = dibatalkan, 3 = selesai
-            $table->integer('status_invitasi')->nullable();
-            $table->string('keterangan_invitasi')->nullable();
+            $table->string('keterangan_invitasi')->default('-');
             $table->timestamps();
         });
     }

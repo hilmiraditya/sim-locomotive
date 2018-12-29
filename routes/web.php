@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('UbahPesanan/{id}', 'Admin\PesananController@ubah_pesanan');
       Route::post('UbahPesanan/{id}', 'Admin\PesananController@get_ubah_pesanan');
       Route::post('InviteStaff/{id}', 'Admin\PesananController@tambah_staff');
+      Route::get('BatalkanStaff/{id_pesanan}/{id_staff}', 'Admin\PesananController@batalkan_staff');
       Route::post('UbahStatusPesanan/{id}', 'Admin\PesananController@ubah_status_pesanan');
       Route::get('HapusPesanan/{id}', 'Admin\PesananController@hapus_pesanan');
       Route::get('KirimEmail/{id}', 'Admin\PesananController@kirim_email_pesanan');

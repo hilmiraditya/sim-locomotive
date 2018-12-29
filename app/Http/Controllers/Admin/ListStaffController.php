@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use DB;
 use Auth;
 use Redirect;
+use Response;
 use App\Model\ListStaff;
 use App\Model\Pesanan;
 use Illuminate\Http\Request;
@@ -41,7 +42,11 @@ class ListStaffController extends Controller
     {
     	$validated = $request->validated();
     	$this->input_request(new ListStaff, $request);
-        return redirect::back()->with('pesan_sukses', 'List Staff berhasil ditambah');
+		return redirect::back()->with('pesan_sukses', 'List Staff berhasil ditambah');
+		// return Response::json(['pesan_sukses'=>'Staff berhasil ditambah']);
+		// return response([
+		// 	'sessionData' => session()->all()
+		// ]);
 	}
 	// public function tambahstaff_ajax(ListStaffRequest $request)
 	// {

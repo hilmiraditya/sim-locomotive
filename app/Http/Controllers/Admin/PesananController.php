@@ -45,11 +45,8 @@ class PesananController extends Controller
             $pesanan->total_harga = $request->get('total_harga');
             $pesanan->user_id = Auth::id();
             $pesanan->nama_penginput = Auth::user()->name;
-            $pesanan->pilihanpesananproduk = $request->get('pilihanpesananproduk');
             $pesanan->save();
-            // $pesananproduk = array_filter(explode("-",$request->get('pilihanpesananproduk')));
-            // Pesanan::find($pesanan->id)->Produk()->attach($pesananproduk);
-            Pesanan::find($pesanan->id)->Produk()->attach($request->get('produk_id'));
+            $pesanan->Produk()->attach($request->get('produk_id'));
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();
@@ -129,13 +126,20 @@ class PesananController extends Controller
     public function tambah_staff(InviteListStaffRequest $request, $id)
     {
         $validated = $request->validated();
-        Pesanan::find($id)->ListStaff()->attach($request->get('id_staff'),['keterangan_invitasi'=>$request->get('keterangan_invitasi'),'status_invitasi'=>1]);
+        for($a=0;$a<sizeof($request->get('id_staff'));$a++){
+            Pesanan::find($id)->ListStaff()->attach($request->get('id_staff')[$a],['keterangan_invitasi'=>$request->get('keterangan_invitasi')[$a]]);
+        }
         return Redirect::back()->with('pesan_sukses', 'Staff berhasil diundang ke dalam agenda produksi');
+    }
+    public function batalkan_staff($id_pesanan, $id_staff)
+    {
+        Pesanan::find($id_pesanan)->ListStaff()->wherePivot('liststaff_id', '=', $id_staff)->detach();
+        return Redirect::back()->with('pesan_sukses', 'Staff berhasil dibatalkan ke dalam agenda produksi');
     }
     public function ubah_status_pesanan(Request $request, $id)
     {
         $pesanan = Pesanan::find($id);
-        // status pesanan : 0 = dibatalkan, 1 = sedang berjalan, 2 = sudah selesai
+        // status pesanan : 0 = dibatalkan, 1 = sedang berjalan
         $pesanan->status_pesanan = $request->get('status_pesanan');
         $pesanan->save();
         return redirect('Admin/Pesanan/DaftarPesanan')->with('pesan_sukses', 'Status pesanan atas nama '.$pesanan->nama_penginput.' berhasil diubah');   

@@ -111,9 +111,43 @@
 
       });
     </script>
+    {{-- <script>
+        jQuery(document).ready(function(){
+          jQuery('#ajaxSubmit').click(function(e){
+              e.preventDefault();
+              $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+              jQuery.ajax({
+                url: "{{url('Admin/ListStaff/TambahStaff')}}",
+                method: 'post',
+                data: {
+                    nama_staff : jQuery('#nama').val(),
+                    email_staff : jQuery('#email').val(),
+                    jabatan_staff : jQuery('#jabatan').val(),
+                    unit_staff : jQuery('#unit').val(),
+                    no_telefon_staff : jQuery('#no_telefon').val(),
+                },
+                success: function(result){
+                    // console.log(result);
+                    if((result.errors)){
+                      jQuery('.pesan_gagal').show();
+                      jQuery('.pesan_sukses').html(result.pesan_sukses);
+                    }
+                    else{
+
+                      // jQuery('.pesan_sukses').show();
+                      // jQuery('.pesan_sukses').html(result.pesan_sukses);                      
+                    }
+                }});
+              });
+          });
+    </script> --}}
 @endsection
 @section('modal')
-<!-- Modal -->
+<!-- Modal Tambah Staff-->
 <div class="modal fade" id="tambahstaffmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -131,25 +165,25 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Nama: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="nama">
+                  <input class="form-control" type="text" name="nama" id="nama">
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-6">
                 <div class="form-group">
                   <label class="form-control-label">Email : <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="email">
+                  <input class="form-control" type="text" name="email" id="email">
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">Jabatan : <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="jabatan">
+                  <input class="form-control" type="text" name="jabatan" id="jabatan">
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
                 <div class="form-group mg-b-10-force">
                   <label class="form-control-label">Unit : <span class="tx-danger">*</span></label>
-                  <select name="unit" class="form-control select2">
+                  <select name="unit" id="unit" class="form-control select2">
                     <option label="Pilih"></option>
                     <option value="Production">Locomotive Production</option>
                     <option value="Wedding">Locomotive Wedding</option>
@@ -159,14 +193,14 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">No. Handphone : <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="no_telefon">
+                  <input class="form-control" type="text" name="no_telefon" id="no_telefon">
                 </div>
               </div><!-- col-4 -->
             </div><!-- row -->
           </div><!-- form-layout -->
       </div>
       <div class="modal-footer">
-            <button class="btn btn-info mg-r-5" type="submit">Tambah Akun</button>
+            <button class="btn btn-info mg-r-5" type="submit" id="ajaxsubmit">Tambah Akun</button>
       </div>
       </form>
     </div>
@@ -184,8 +218,6 @@
         </button>
       </div>
       <div class="modal-body">
-          <form action="{{url('Admin/ListStaff/TambahStaff')}}" method="post">
-          @csrf
           <div class="form-layout">
             <div class="row mg-b-25">
               <div class="col-lg-6">

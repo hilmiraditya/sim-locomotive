@@ -8,7 +8,8 @@
         <th>No</th>
         <th>Nama Staff</th>
         <th>Jabatan</th>
-        <th>Nomor</th>
+        <th>No. Telefon</th>
+        <th>Keterangan</th>
         <th>Opsi</th>
       </tr>
     </thead>
@@ -20,8 +21,9 @@
         <td>{{ $staff->nama_staff }}</td>
         <td>{{ $staff->jabatan_staff }}</td>
         <td>{{ $staff->no_telefon_staff }}</td>
+        <td>{{ $staff->pivot->keterangan_invitasi }}</td>
         <td>
-          <a style="color:white;" class="btn btn-sm btn-danger">Batal</a>
+        <a style="color:white;" href="{{ url('Admin/Pesanan/BatalkanStaff/'.$view['pesanan']->id.'/'.$staff->id) }}" class="btn btn-sm btn-danger">Batal</a>
         </td>
         <?php $a++; ?>
       @endforeach

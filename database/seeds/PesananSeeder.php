@@ -44,13 +44,9 @@ class PesananSeeder extends Seeder
         	//nama penginput
         	$pesanan->user_id = 1;
         	$pesanan->nama_penginput = 'Hilmi Raditya';
-            //pilihan pesanan produk
-
-            $pilihanpesananproduk = '1-2-3-4';
-            $pesanan->pilihanpesananproduk = $pilihanpesananproduk;
-        	$pesanan->save();
-            $pesananproduk = explode("-",$pilihanpesananproduk);
-            Pesanan::find($pesanan->id)->Produk()->attach($pesananproduk);
+			$pesanan->save();
+			$pesananproduk = [1,2,3,4];
+            $pesanan->Produk()->attach($pesananproduk);
         //}
     }
 }
